@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">NiceParking</string>
+    <string name="title_main">NiceParking_MainActivity</string>
+
+    <string name="title_location">获取定位数据</string>
+    <string name="location">获取定位数据</string>
+    <string name="location_dec">调用定位接口获取定位数据</string>
+
+    <string name="title_locationBackground">后台定位示例</string>
+    <string name="locationBackground">后台定位</string>
+    <string name="locationBackground_dec">Android 8.0后台定位示例</string>
+
+    <string name="title_lastLocation">获取最后一次位置</string>
+    <string name="lastLocation">获取最后一次位置</string>
+    <string name="lastLocation_dec">获取最后一次定位的位置，此位置是一个历史位置</string>
+
+    <string name="jump2Amap">跳转到Amap测试</string>
+    <string name="jump2Amap_dec">验证从Demo跳转到Amap发起导航等动作</string>
+
+
+    <string name="defaultInteval">2000</string>
+    <string name="defaultHttpTimeout">30000</string>
+
+    <string name="battery_saving">低功耗模式</string>
+    <string name="device_sensors">仅设备模式</string>
+    <string name="hight_accuracy">高精度模式</string>
+    <string name="interval">定位周期(ms)</string>
+    <string name="httpTimeout">网络超时(ms)</string>
+    <string name="location_once">单次定位</string>
+    <string name="needAddress">逆地理编码</string>
+    <string name="cacheAble">开启缓存</string>
+    <string name="onceLastest">提高首次定位精度</string>
+    <string name="gpsFirst">GPS优先</string>
+    <string name="useSensor">使用传感器</string>
+    <string name="wifiScan">开启wifi扫描</string>
+
+    <string name="geoLanguage">逆地理语言</string>
+
+    <string name="startLocation">开始定位</string>
+    <string name="stopLocation">停止定位</string>
+
+
+    <string name="notifyTitle">提示</string>
+    <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="setting">设置</string>
+    <string name="cancel">取消</string>
+
+
+    <string name="enableBackgroundLocation">开启后台定位</string>
+    <string name="disableBackgroundLocation">关闭后台定位</string>
+
+    <string name="getLastLocation">获取最后位置</string>
+
+
 </resources>
