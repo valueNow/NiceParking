@@ -52,4 +52,12 @@
     <string name="getLastLocation">获取最后位置</string>
 
 
+    <!--Menu String data -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">UserName</string>
+    <string name="nav_header_subtitle">zhao.yanan@alibaba-inc.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
