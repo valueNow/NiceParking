@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NiceParking</string>
+    <string name="app_name">易泊车</string>
     <string name="title_main">NiceParking_MainActivity</string>
 
     <string name="title_location">获取定位数据</string>

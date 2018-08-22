@@ -19,6 +19,7 @@ import com.amap.api.location.AMapLocationClientOption.AMapLocationProtocol;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.AMapLocationQualityReport;
 
+import cn.beatle.parking.ParkingApplication;
 import cn.beatle.parking.R;
 
 /**
@@ -71,7 +72,7 @@ public class Location_BackGround_Activity extends CheckPermissionsActivity
 	@Override
 	protected void onStop() {
 		super.onStop();
-		boolean isBackground = ((MyApplication)getApplication()).isBackground();
+		boolean isBackground = ((ParkingApplication)getApplication()).isBackground();
 		//如果app已经切入到后台，启动后台定位功能
 		if(isBackground){
 			if(null != locationClient) {

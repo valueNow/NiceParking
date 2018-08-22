@@ -3,6 +3,8 @@ package cn.beatle.parking;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -15,6 +17,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -32,91 +36,17 @@ import com.amap.api.maps2d.UiSettings;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.MyLocationStyle;
 
+import java.lang.ref.WeakReference;
+
+import cn.beatle.parking.http.JSAction;
+import cn.beatle.parking.http.Urls;
 import cn.beatle.parking.locationDemo.Jump2Amap_Activity;
 import cn.beatle.parking.locationDemo.LastLocation_Activity;
 import cn.beatle.parking.locationDemo.Location_Activity;
 import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
 
 
-/*
-
-public class MainActivity extends ListActivity {
-
-
-    private static class DemoDetails {
-        private final int titleId;
-        private final int descriptionId;
-        private final Class<? extends android.app.Activity> activityClass;
-        public DemoDetails(int titleId, int descriptionId,
-                           Class<? extends android.app.Activity> activityClass) {
-            super();
-            this.titleId = titleId;
-            this.descriptionId = descriptionId;
-            this.activityClass = activityClass;
-        }
-    }
-
-
-    private static class CustomArrayAdapter extends ArrayAdapter<DemoDetails> {
-        public CustomArrayAdapter(Context context, DemoDetails[] demos) {
-            super(context, R.layout.feature, R.id.title, demos);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            FeatureView featureView;
-            if (convertView instanceof FeatureView) {
-                featureView = (FeatureView) convertView;
-            } else {
-                featureView = new FeatureView(getContext());
-            }
-            DemoDetails demo = getItem(position);
-            featureView.setTitleId(demo.titleId);
-            featureView.setDescriptionId(demo.descriptionId);
-            return featureView;
-        }
-    }
-
-
-    private static final DemoDetails[] demos = {
-            new DemoDetails(R.string.location,
-                    R.string.location_dec, Location_Activity.class),
-            new DemoDetails(R.string.locationBackground,
-                    R.string.locationBackground_dec, Location_BackGround_Activity.class),
-            new DemoDetails(R.string.lastLocation, R.string.lastLocation_dec,
-                    LastLocation_Activity.class),
-            new DemoDetails(R.string.jump2Amap, R.string.jump2Amap_dec,
-                    Jump2Amap_Activity.class),
-    };
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        setTitle(R.string.title_main);
-        ListAdapter adapter = new CustomArrayAdapter(
-                this.getApplicationContext(), demos);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        System.exit(0);
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        DemoDetails demo = (DemoDetails) getListAdapter().getItem(position);
-        startActivity(
-                new Intent(this.getApplicationContext(), demo.activityClass));
-    }
-}
-*/
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener ,LocationSource,
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LocationSource,
         AMapLocationListener {
 
 
@@ -133,16 +63,15 @@ public class MainActivity extends AppCompatActivity
     private static final int STROKE_COLOR = Color.argb(180, 3, 145, 255);
     private static final int FILL_COLOR = Color.argb(10, 0, 0, 180);
 
-    private ImageButton im_location_btn ;
-
+    private ImageButton im_location_btn;
+    private WebView mapWebView;
+    private MyHandler mHandler;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -153,7 +82,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        }).show();
             }
         });
 
@@ -167,13 +101,27 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
-
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
         init();
 
+        mapWebView = findViewById(R.id.map_webView);
 
+        WebSettings settings = mapWebView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        settings.setPluginState(WebSettings.PluginState.ON);
+        settings.setAllowFileAccess(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+
+        mHandler = new MyHandler(this);
+        JSAction action = new JSAction(mHandler);
+        mapWebView.addJavascriptInterface(action, "NiceParkingJS");
+
+        mapWebView.loadUrl(Urls.MAP_URL);
 
     }
 
@@ -228,19 +176,19 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }else if (id == R.id.item_location) {
+        } else if (id == R.id.item_location) {
 
             Intent intent = new Intent(MainActivity.this, Location_Activity.class);
             //startActivityForResult(intent,R.id.item_location);
-             startActivity(intent);
-        }else if (id == R.id.item_locationBackground) {
+            startActivity(intent);
+        } else if (id == R.id.item_locationBackground) {
             Intent intent = new Intent(MainActivity.this, Location_BackGround_Activity.class);
             startActivity(intent);
-        }else if (id == R.id.item_lastLocation) {
+        } else if (id == R.id.item_lastLocation) {
             Intent intent = new Intent(MainActivity.this, LastLocation_Activity.class);
             startActivity(intent);
 
-        }else if (id == R.id.item_jump2Amap) {
+        } else if (id == R.id.item_jump2Amap) {
             Intent intent = new Intent(MainActivity.this, Jump2Amap_Activity.class);
             startActivity(intent);
         }
@@ -261,10 +209,10 @@ public class MainActivity extends AppCompatActivity
             setUpMap();
         }
 
-        mLocationErrText = (TextView)findViewById(R.id.location_errInfo_text);
+        mLocationErrText = (TextView) findViewById(R.id.location_errInfo_text);
         mLocationErrText.setVisibility(View.GONE);
 
-        im_location_btn = (ImageButton)findViewById(R.id.im_location_btn);
+        im_location_btn = (ImageButton) findViewById(R.id.im_location_btn);
         im_location_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -288,7 +236,7 @@ public class MainActivity extends AppCompatActivity
         setupLocationStyle();
     }
 
-    private void setupLocationStyle(){
+    private void setupLocationStyle() {
         // 自定义系统定位蓝点
         MyLocationStyle myLocationStyle = new MyLocationStyle();
         // 自定义定位蓝点图标
@@ -310,7 +258,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        mapView.onResume();
+//        mapView.onResume();
     }
 
 
@@ -334,7 +282,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     /**
      * 方法必须重写
      */
@@ -342,7 +289,7 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
-        if(null != mlocationClient){
+        if (null != mlocationClient) {
             mlocationClient.onDestroy();
         }
     }
@@ -359,8 +306,8 @@ public class MainActivity extends AppCompatActivity
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
                 aMap.moveCamera(CameraUpdateFactory.zoomTo(18));
             } else {
-                String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
-                Log.e("AmapErr",errText);
+                String errText = "定位失败," + amapLocation.getErrorCode() + ": " + amapLocation.getErrorInfo();
+                Log.e("AmapErr", errText);
                 mLocationErrText.setVisibility(View.VISIBLE);
                 mLocationErrText.setText(errText);
             }
@@ -401,6 +348,31 @@ public class MainActivity extends AppCompatActivity
             mlocationClient.onDestroy();
         }
         mlocationClient = null;
+    }
+
+    private static class MyHandler extends Handler {
+        private WeakReference<MainActivity> mOut;
+
+        public MyHandler(MainActivity out) {
+            mOut = new WeakReference<>(out);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case JSAction.EVENT_ID_JUMP_TO_ORDER:
+                    if (mOut != null && mOut.get() != null) {
+                        mOut.get().jumpToOrder((String) msg.obj);
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void jumpToOrder(String orderInfo) {
+        Intent intent = new Intent(this,OrderActivity.class);
+        intent.putExtra(Consts.ORDER_INFO,orderInfo);
+        startActivity(intent);
     }
 
 }
