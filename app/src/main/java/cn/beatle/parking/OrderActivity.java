@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken;
 
 import cn.beatle.parking.http.ParkingBean;
 
-public class OrderActivity extends Activity {
+public class OrderActivity extends BaseFragmentActivity {
     private ParkingBean parkingBean;
     private Gson gson;
     @Override
