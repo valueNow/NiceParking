@@ -62,5 +62,5 @@
 
     <string name="account_empty">账号不能为空</string>
     <string name="password_empty">密码不能为空</string>
-    <string name="login">密码不能为空</string>
+    <string name="login">登录</string>
 </resources>

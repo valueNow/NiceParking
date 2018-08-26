@@ -183,6 +183,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.item_jump2Amap) {
             Intent intent = new Intent(MainActivity.this, Jump2Amap_Activity.class);
             startActivity(intent);
+        }else if(id == R.id.item_login){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
