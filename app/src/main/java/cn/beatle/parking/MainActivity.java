@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mapWebView.setWebChromeClient(new WebChromeClient());
 
 
-
     }
 
     @Override
@@ -155,39 +154,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.my_orders:
+                break;
+            case R.id.parking_rent:
+                break;
+            case R.id.system_setting:
+                break;
+            case R.id.version_info:
+                break;
+            case R.id.service_center:
+                break;
+            case R.id.item_location:
+                Intent intent = new Intent(MainActivity.this, Location_Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.item_locationBackground:
+                Intent locBack = new Intent(MainActivity.this, Location_BackGround_Activity.class);
+                startActivity(locBack);
+                break;
+            case R.id.item_lastLocation:
+                Intent lastLoc = new Intent(MainActivity.this, LastLocation_Activity.class);
+                startActivity(lastLoc);
+                break;
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+            case R.id.item_jump2Amap:
+                Intent jump2Amap = new Intent(MainActivity.this, Jump2Amap_Activity.class);
+                startActivity(jump2Amap);
+                break;
+            case R.id.item_login:
+                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login);
+                break;
+            default:
+                break;
 
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } else if (id == R.id.item_location) {
-
-            Intent intent = new Intent(MainActivity.this, Location_Activity.class);
-            startActivity(intent);
-        } else if (id == R.id.item_locationBackground) {
-            Intent intent = new Intent(MainActivity.this, Location_BackGround_Activity.class);
-            startActivity(intent);
-        } else if (id == R.id.item_lastLocation) {
-            Intent intent = new Intent(MainActivity.this, LastLocation_Activity.class);
-            startActivity(intent);
-
-        } else if (id == R.id.item_jump2Amap) {
-            Intent intent = new Intent(MainActivity.this, Jump2Amap_Activity.class);
-            startActivity(intent);
-        }else if(id == R.id.item_login){
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -208,8 +210,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 activate();
             }
         });
-
-
 
 
     }
@@ -263,20 +263,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
 //        if (mListener != null && amapLocation != null) {
-            if (amapLocation != null
-                    && amapLocation.getErrorCode() == 0) {
+        if (amapLocation != null
+                && amapLocation.getErrorCode() == 0) {
 
-                //拼接传输数据字符串
-                String loctionInfo = "["+amapLocation.getLongitude()+","+ //lon
-                        amapLocation.getLatitude()+"]";
-                String loadurl_str= "javascript:showInfoFromApp('" +loctionInfo+ "')" ;
+            //拼接传输数据字符串
+            String loctionInfo = "[" + amapLocation.getLongitude() + "," + //lon
+                    amapLocation.getLatitude() + "]";
+            String loadurl_str = "javascript:showInfoFromApp('" + loctionInfo + "')";
 
-                //发送数据
-                Log.d("zhao.yanan","onLocationChanged:loadurl_str="+loadurl_str);
-                mapWebView.loadUrl(loadurl_str);
+            //发送数据
+            Log.d("zhao.yanan", "onLocationChanged:loadurl_str=" + loadurl_str);
+            mapWebView.loadUrl(loadurl_str);
 
-                //停止定位
-                deactivate();
+            //停止定位
+            deactivate();
 
         }
     }
@@ -334,8 +334,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void jumpToOrder(String orderInfo) {
-        Intent intent = new Intent(this,OrderActivity.class);
-        intent.putExtra(Consts.ORDER_INFO,orderInfo);
+        Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra(Consts.ORDER_INFO, orderInfo);
         startActivity(intent);
     }
 
