@@ -5,24 +5,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/order_list"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="我的订单" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/parking_renting"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="车位租赁" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/sys_config"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="系统设置" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/version_info"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="版本信息" />
+        <item
+            android:id="@+id/service_center"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="客服中心" />
     </group>
 
-    <item android:title="Communicate">
+
+<!--    <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
@@ -33,9 +38,9 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
         </menu>
-    </item>
+    </item>-->
 
-    <item android:title="上面没用，点击下面的试试">
+   <item android:title="定位跳转样例，Demo输出时删除">
         <menu>
             <item
                 android:id="@+id/item_location"
@@ -60,4 +65,5 @@
         </menu>
 
     </item>
+
 </menu>
