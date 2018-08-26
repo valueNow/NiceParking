@@ -41,6 +41,7 @@ import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+
         AMapLocationListener {
 
 
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

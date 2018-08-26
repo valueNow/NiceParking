@@ -53,6 +53,10 @@
                 android:id="@+id/item_jump2Amap"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/jump2Amap" />
+            <item
+                android:id="@+id/item_login"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/jump2Amap" />
         </menu>
 
     </item>

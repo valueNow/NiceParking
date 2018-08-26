@@ -60,4 +60,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="account_empty">账号不能为空</string>
+    <string name="password_empty">密码不能为空</string>
+    <string name="login">密码不能为空</string>
 </resources>
