@@ -27,14 +27,8 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.AMapOptions;
-import com.amap.api.maps2d.CameraUpdateFactory;
-import com.amap.api.maps2d.LocationSource;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.UiSettings;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
-import com.amap.api.maps2d.model.MyLocationStyle;
 
 import java.lang.ref.WeakReference;
 
@@ -46,13 +40,11 @@ import cn.beatle.parking.locationDemo.Location_Activity;
 import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LocationSource,
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AMapLocationListener {
 
 
-    private AMap aMap;
     private MapView mapView;
-    private OnLocationChangedListener mListener;
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
     private RadioGroup mGPSModeGroup;
@@ -120,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mHandler = new MyHandler(this);
         JSAction action = new JSAction(mHandler);
         mapWebView.addJavascriptInterface(action, "NiceParkingJS");
-
         mapWebView.loadUrl(Urls.MAP_URL);
 
     }
@@ -179,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.item_location) {
 
             Intent intent = new Intent(MainActivity.this, Location_Activity.class);
-            //startActivityForResult(intent,R.id.item_location);
             startActivity(intent);
         } else if (id == R.id.item_locationBackground) {
             Intent intent = new Intent(MainActivity.this, Location_BackGround_Activity.class);
@@ -202,12 +192,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * 初始化
      */
     private void init() {
-        if (aMap == null) {
-            aMap = mapView.getMap();
-            mUiSettings = aMap.getUiSettings();
-
-            setUpMap();
-        }
 
         mLocationErrText = (TextView) findViewById(R.id.location_errInfo_text);
         mLocationErrText.setVisibility(View.GONE);
@@ -216,41 +200,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         im_location_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mlocationClient.startLocation();
+                activate();
             }
         });
 
+
+
+
     }
 
-
-    /**
-     * 设置一些amap的属性
-     */
-    private void setUpMap() {
-        mUiSettings.setZoomPosition(AMapOptions.ZOOM_POSITION_RIGHT_CENTER);
-        mUiSettings.setZoomControlsEnabled(false); //不显示缩放安妮
-
-        aMap.setLocationSource(this);// 设置定位监听
-        aMap.getUiSettings().setMyLocationButtonEnabled(false);// 设置默认定位按钮是否显示
-        aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
-        setupLocationStyle();
-    }
-
-    private void setupLocationStyle() {
-        // 自定义系统定位蓝点
-        MyLocationStyle myLocationStyle = new MyLocationStyle();
-        // 自定义定位蓝点图标
-        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.
-                fromResource(R.drawable.gps_point));
-        // 自定义精度范围的圆形边框颜色
-        myLocationStyle.strokeColor(STROKE_COLOR);
-        //自定义精度范围的圆形边框宽度
-        myLocationStyle.strokeWidth(5);
-        // 设置圆形的填充颜色
-        myLocationStyle.radiusFillColor(FILL_COLOR);
-        // 将自定义的 myLocationStyle 对象添加到地图上
-        aMap.setMyLocationStyle(myLocationStyle);
-    }
 
     /**
      * 方法必须重写
@@ -299,27 +257,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
-        if (mListener != null && amapLocation != null) {
+//        if (mListener != null && amapLocation != null) {
             if (amapLocation != null
                     && amapLocation.getErrorCode() == 0) {
-                mLocationErrText.setVisibility(View.GONE);
-                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
-                aMap.moveCamera(CameraUpdateFactory.zoomTo(18));
-            } else {
-                String errText = "定位失败," + amapLocation.getErrorCode() + ": " + amapLocation.getErrorInfo();
-                Log.e("AmapErr", errText);
-                mLocationErrText.setVisibility(View.VISIBLE);
-                mLocationErrText.setText(errText);
-            }
+
+                //拼接传输数据字符串
+                String loctionInfo = "["+amapLocation.getLongitude()+","+ //lon
+                        amapLocation.getLatitude()+"]";
+                Log.d("zhao.yanan","onLocationChanged:"+loctionInfo);
+                mapWebView.loadUrl("javascript:showInfoFromApp('" + loctionInfo + "')");
+                deactivate();
+
         }
     }
 
     /**
      * 激活定位
      */
-    @Override
-    public void activate(OnLocationChangedListener listener) {
-        mListener = listener;
+    public void activate() {
         if (mlocationClient == null) {
             mlocationClient = new AMapLocationClient(this);
             mLocationOption = new AMapLocationClientOption();
@@ -340,9 +295,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /**
      * 停止定位
      */
-    @Override
     public void deactivate() {
-        mListener = null;
+//        mListener = null;
         if (mlocationClient != null) {
             mlocationClient.stopLocation();
             mlocationClient.onDestroy();

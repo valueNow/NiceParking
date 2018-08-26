@@ -10,6 +10,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -26,4 +30,8 @@ dependencies {
     implementation files('libs/Amap_2DMap_V5.2.0_20170627.jar')
     implementation files('libs/AMap_Search_V6.1.0_20180330.jar')
     implementation files('libs/Volley.jar')
+    implementation files('libs/httpclient-4.5.6.jar')
+    implementation files('libs/httpclient-cache-4.5.6.jar')
+    implementation files('libs/httpclient-win-4.5.6.jar')
+
 }
