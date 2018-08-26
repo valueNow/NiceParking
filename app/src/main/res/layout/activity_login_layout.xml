@@ -11,7 +11,7 @@
         android:id="@+id/logo_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="52dp"
         android:src="@mipmap/logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -31,7 +31,8 @@
         android:hint="请输入账号"
         android:maxLength="14"
         android:padding="12dp"
-        android:textColorHint="#7f9aff"
+        android:textColorHint="#79bdff"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_image"
@@ -49,7 +50,8 @@
         android:hint="请输入密码"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:textColorHint="#7f9aff"
+        android:textSize="14sp"
+        android:textColorHint="#79bdff"
         app:layout_constraintLeft_toLeftOf="@id/account_editText"
         app:layout_constraintRight_toRightOf="@id/account_editText"
         app:layout_constraintTop_toBottomOf="@id/account_editText" />
@@ -60,7 +62,8 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="忘记密码"
-        android:textColor="#7f9aff"
+        android:textSize="12sp"
+        android:textColor="#52acff"
         app:layout_constraintRight_toRightOf="@id/password_editText"
         app:layout_constraintTop_toBottomOf="@id/password_editText" />
 
@@ -71,8 +74,8 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/login_form_bg_solid_shape"
         android:text="登录"
-        android:textColor="#176fc1"
-        android:textSize="15sp"
+        android:textColor="#1972d6"
+        android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="@id/account_editText"
         app:layout_constraintRight_toRightOf="@id/account_editText"
         app:layout_constraintTop_toBottomOf="@id/forget_password" />
@@ -83,7 +86,8 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="没有账号请注册"
-        android:textColor="#7f9aff"
+        android:textSize="12sp"
+        android:textColor="#52acff"
         app:layout_constraintRight_toRightOf="@id/login_button"
         app:layout_constraintTop_toBottomOf="@id/login_button" />
 

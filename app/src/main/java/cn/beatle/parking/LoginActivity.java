@@ -16,7 +16,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends BaseFragmentActivity implements View.OnClickListener {
     private EditText accountEt, passwordEt;
     private TextView forgetPWTv, registerTv;
     private Button loginBtn;
