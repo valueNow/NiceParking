@@ -5,42 +5,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/order_list"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="我的订单" />
+            android:id="@+id/my_orders"
+            android:icon="@mipmap/my_order"
+            android:title="@string/my_orders" />
         <item
-            android:id="@+id/parking_renting"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="车位租赁" />
+            android:id="@+id/parking_rent"
+            android:icon="@mipmap/parking_rent"
+            android:title="@string/parking_rent" />
         <item
-            android:id="@+id/sys_config"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="系统设置" />
+            android:id="@+id/system_setting"
+            android:icon="@mipmap/settings"
+            android:title="@string/setting" />
         <item
             android:id="@+id/version_info"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="版本信息" />
+            android:icon="@mipmap/version_icon"
+            android:title="@string/version_info" />
         <item
             android:id="@+id/service_center"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="客服中心" />
+            android:icon="@mipmap/service_center"
+            android:title="@string/service_center" />
     </group>
 
-
-<!--    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>-->
-
-   <item android:title="定位跳转样例，Demo输出时删除">
+    <item android:title="上面没用，点击下面的试试">
         <menu>
             <item
                 android:id="@+id/item_location"
