@@ -1,7 +1,6 @@
 package cn.beatle.parking;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageButton;
@@ -41,7 +41,6 @@ import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-
         AMapLocationListener {
 
 
@@ -53,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private TextView mLocationErrText;
-    private static final int STROKE_COLOR = Color.argb(180, 3, 145, 255);
-    private static final int FILL_COLOR = Color.argb(10, 0, 0, 180);
 
     private ImageButton im_location_btn;
     private WebView mapWebView;
@@ -96,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
+
         init();
 
         mapWebView = findViewById(R.id.map_webView);
@@ -114,6 +112,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         JSAction action = new JSAction(mHandler);
         mapWebView.addJavascriptInterface(action, "NiceParkingJS");
         mapWebView.loadUrl(Urls.MAP_URL);
+
+        mapWebView.setWebChromeClient(new WebChromeClient());
+
+
 
     }
 
@@ -265,8 +267,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //拼接传输数据字符串
                 String loctionInfo = "["+amapLocation.getLongitude()+","+ //lon
                         amapLocation.getLatitude()+"]";
-                Log.d("zhao.yanan","onLocationChanged:"+loctionInfo);
-                mapWebView.loadUrl("javascript:showInfoFromApp('" + loctionInfo + "')");
+                String loadurl_str= "javascript:showInfoFromApp('" +loctionInfo+ "')" ;
+
+                //发送数据
+                Log.d("zhao.yanan","onLocationChanged:loadurl_str="+loadurl_str);
+                mapWebView.loadUrl(loadurl_str);
+
+                //停止定位
                 deactivate();
 
         }
