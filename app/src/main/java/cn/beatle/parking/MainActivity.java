@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RadioGroup mGPSModeGroup;
     private UiSettings mUiSettings;
 
-
     private TextView mLocationErrText;
 
     private ImageButton im_location_btn;
