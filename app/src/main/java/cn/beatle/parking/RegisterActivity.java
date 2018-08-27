@@ -51,12 +51,9 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         if (TextUtils.isEmpty(account)) {
             Toast.makeText(this, getResources().getString(R.string.account_empty), Toast.LENGTH_SHORT).show();
             return;
-        }else{
-            boolean check_result = OSUtils.checkAccountName(account);
-            if(check_result){
+        }else if(!OSUtils.checkAccountName(account)){
                 Toast.makeText(this, getResources().getString(R.string.account_rule), Toast.LENGTH_SHORT).show();
                 return ;
-            }
         }
         String password = passwordEt.getText().toString();
         if (TextUtils.isEmpty(password)) {
