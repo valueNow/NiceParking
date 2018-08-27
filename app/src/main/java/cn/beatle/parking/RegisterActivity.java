@@ -1,6 +1,5 @@
 package cn.beatle.parking;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -53,15 +51,29 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         if (TextUtils.isEmpty(account)) {
             Toast.makeText(this, getResources().getString(R.string.account_empty), Toast.LENGTH_SHORT).show();
             return;
+        }else{
+            boolean check_result = OSUtils.checkAccountName(account);
+            if(check_result){
+                Toast.makeText(this, getResources().getString(R.string.account_rule), Toast.LENGTH_SHORT).show();
+                return ;
+            }
         }
         String password = passwordEt.getText().toString();
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, getResources().getString(R.string.password_empty), Toast.LENGTH_SHORT).show();
             return;
+
+         //判断是否符合规范
+        }else if(!OSUtils.checkPassword(password)){
+            Toast.makeText(this, getResources().getString(R.string.password_rule), Toast.LENGTH_SHORT).show();
+            return ;
         }
         String carNo = carNoEt.getText().toString();
         if (TextUtils.isEmpty(carNo)) {
             Toast.makeText(this, getResources().getString(R.string.carNo_empty), Toast.LENGTH_SHORT).show();
+            return;
+        }else if(!OSUtils.isCarnumberNO(carNo)){
+            Toast.makeText(this, getResources().getString(R.string.carNo_rule), Toast.LENGTH_SHORT).show();
             return;
         }
         StringBuilder register = new StringBuilder(Urls.REGISTER_URL);

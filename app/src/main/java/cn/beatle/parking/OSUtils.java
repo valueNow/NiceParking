@@ -51,7 +51,7 @@ public class OSUtils {
 
 
     //用户名字符匹配：由字母数字下划线组成且开头必须是字母，不能超过16位
-    private static boolean checkAccountName(String account_name) {
+    public static boolean checkAccountName(String account_name) {
 
         Pattern p = Pattern.compile("[a-zA-Z]{1}[a-zA-Z0-9_]{1,15}");
         Matcher m = p.matcher(account_name);
@@ -60,21 +60,21 @@ public class OSUtils {
 
     //匹配密码：字母和数字构成，不能超过16位
 
-    private static boolean checkPassword(String password) {
+    public static boolean checkPassword(String password) {
         Pattern p = Pattern.compile("[a-zA-Z0-9]{1,16}");
         Matcher m = p.matcher(password);
         return m.matches();
     }
 
     //匹配电话：全数字，长度为11位
-    private static boolean checkPhoneNum(String phoneNum) {
+    public static boolean checkPhoneNum(String phoneNum) {
         Pattern p = Pattern.compile("[0-9]{11}");
         Matcher m = p.matcher(phoneNum);
         return m.matches();
     }
 
     //匹配电话：全数字，长度为11位
-    private static boolean check(String phoneNum) {
+    public static boolean check(String phoneNum) {
         Pattern p = Pattern.compile("[0-9]{11}");
         Matcher m = p.matcher(phoneNum);
         return m.matches();
