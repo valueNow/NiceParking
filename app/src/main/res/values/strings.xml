@@ -67,4 +67,5 @@
     <string name="parking_rent">车位租赁</string>
     <string name="version_info">版本信息</string>
     <string name="service_center">客服中心</string>
+    <string name="title_activity_parking_details">ParkingDetails</string>
 </resources>

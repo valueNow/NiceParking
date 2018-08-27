@@ -24,13 +24,13 @@
         android:id="@+id/include"
         layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
     <ImageButton
         android:id="@+id/im_location_btn"
@@ -42,8 +42,7 @@
         android:background="#00000000"
         android:src="@android:drawable/ic_menu_mylocation"
         app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="right|center"
-        app:layout_constraintBottom_toTopOf='@id/fab' />
+        app:layout_anchorGravity="right|center" />
 
 
 </android.support.design.widget.CoordinatorLayout>
