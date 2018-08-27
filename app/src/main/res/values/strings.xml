@@ -62,6 +62,7 @@
 
     <string name="account_empty">账号不能为空</string>
     <string name="password_empty">密码不能为空</string>
+    <string name="carNo_empty">车牌号不能为空</string>
     <string name="login">登录</string>
     <string name="my_orders">我的订单</string>
     <string name="parking_rent">车位租赁</string>

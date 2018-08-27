@@ -1,6 +1,7 @@
 package cn.beatle.parking.http;
 
 import android.os.Handler;
+import android.os.Message;
 import android.webkit.JavascriptInterface;
 
 /**
@@ -20,6 +21,9 @@ public class JSAction {
 
     @JavascriptInterface
     public void order(String orderInfo) {
-        mJSEventHandler.sendEmptyMessage(EVENT_ID_JUMP_TO_ORDER);
+        Message msg = mJSEventHandler.obtainMessage();
+        msg.what = EVENT_ID_JUMP_TO_ORDER;
+        msg.obj = orderInfo;
+        mJSEventHandler.sendMessage(msg);
     }
 }

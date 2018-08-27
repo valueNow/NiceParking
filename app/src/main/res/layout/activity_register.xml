@@ -4,6 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login"
     tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:text="请注册账号"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/account_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_form_bg_shape"
+        android:drawableLeft="@mipmap/account_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/account_icon"
+        android:hint="请输入账号"
+        android:maxLength="14"
+        android:padding="12dp"
+        android:textColorHint="#79bdff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tips"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_form_bg_shape"
+        android:drawableLeft="@mipmap/password_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/password_icon"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColorHint="#79bdff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/account_editText"
+        app:layout_constraintRight_toRightOf="@id/account_editText"
+        app:layout_constraintTop_toBottomOf="@id/account_editText" />
+
+    <EditText
+        android:id="@+id/carNo_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_form_bg_shape"
+        android:drawableLeft="@mipmap/password_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/car_no"
+        android:hint="请输入车牌号"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColorHint="#79bdff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/account_editText"
+        app:layout_constraintRight_toRightOf="@id/account_editText"
+        app:layout_constraintTop_toBottomOf="@id/password_editText" />
+
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_form_bg_solid_shape"
+        android:text="注册"
+        android:textColor="#1972d6"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/account_editText"
+        app:layout_constraintRight_toRightOf="@id/account_editText"
+        app:layout_constraintTop_toBottomOf="@id/carNo_editText" />
+
+    <TextView
+        android:id="@+id/register_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="已有账号请登录"
+        android:textColor="#52acff"
+        android:textSize="12sp"
+        app:layout_constraintRight_toRightOf="@id/register_button"
+        app:layout_constraintTop_toBottomOf="@id/register_button" />
 
 </android.support.constraint.ConstraintLayout>
