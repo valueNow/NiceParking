@@ -1,8 +1,11 @@
 package cn.beatle.parking;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,8 +25,6 @@ public class BaseFragmentActivity extends FragmentActivity{
 
 
     private boolean mSlideToFinishEnable = true;
-
-    public static boolean isForeground = false;//极光推送
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,31 @@ public class BaseFragmentActivity extends FragmentActivity{
         }
     }
 
+    protected boolean isLogin(){
+        String userID = Prefs.getString(Consts.USER_ID,"");
+        if(TextUtils.isEmpty(userID)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    protected boolean isLogin(boolean guide){
+        String userID = Prefs.getString(Consts.USER_ID,"");
+        if(TextUtils.isEmpty(userID)){
+            if(guide){
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+            }
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    protected String getAccount(){
+        return Prefs.getString(Consts.USER_ID,"");
+    }
 
     @Override
     protected void onResume() {

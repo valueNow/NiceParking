@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,10 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -38,7 +41,7 @@ import cn.beatle.parking.locationDemo.Location_Activity;
 import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,
         AMapLocationListener {
 
 
@@ -53,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageButton im_location_btn;
     private WebView mapWebView;
     private MyHandler mHandler;
-
+    private ImageView avatarImg;
+    private TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +87,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                initLoginState();
+                navigationView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            }
+        });
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
@@ -110,8 +120,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mapWebView.loadUrl(Urls.MAP_URL);
 
         mapWebView.setWebChromeClient(new WebChromeClient());
+        avatarImg = findViewById(R.id.imageView);
+        userName = findViewById(R.id.textView);
+        initLoginState();
 
+    }
 
+    private void initLoginState() {
+        if(userName==null || avatarImg==null){
+            avatarImg = findViewById(R.id.imageView);
+            userName = findViewById(R.id.textView);
+        }
+        if(userName==null || avatarImg==null)return;
+        if(isLogin()){
+            userName.setText(Prefs.getString(Consts.USER_NAME,""));
+            avatarImg.setOnClickListener(null);
+        }else{
+            userName.setText("未登录");
+            avatarImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent login = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivityForResult(login,0);
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0 && resultCode == RESULT_OK){
+            initLoginState();
+        }
     }
 
     @Override

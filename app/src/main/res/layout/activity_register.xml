@@ -35,6 +35,7 @@
         android:hint="请输入账号"
         android:maxLength="14"
         android:padding="12dp"
+        android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,11 +55,32 @@
         android:hint="请输入密码"
         android:inputType="textPassword"
         android:padding="12dp"
+        android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/account_editText"
         app:layout_constraintRight_toRightOf="@id/account_editText"
         app:layout_constraintTop_toBottomOf="@id/account_editText" />
+
+    <EditText
+        android:id="@+id/phone_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_form_bg_shape"
+        android:drawableLeft="@mipmap/password_icon"
+        android:drawablePadding="5dp"
+        android:drawableStart="@mipmap/password_icon"
+        android:hint="请输入电话"
+        android:maxLength="11"
+        android:inputType="phone"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#79bdff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@id/account_editText"
+        app:layout_constraintRight_toRightOf="@id/account_editText"
+        app:layout_constraintTop_toBottomOf="@id/password_editText" />
 
     <EditText
         android:id="@+id/carNo_editText"
@@ -69,14 +91,15 @@
         android:drawableLeft="@mipmap/password_icon"
         android:drawablePadding="5dp"
         android:drawableStart="@mipmap/car_no"
+        android:inputType="textCapWords"
         android:hint="请输入车牌号"
-        android:inputType="textPassword"
         android:padding="12dp"
+        android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/account_editText"
         app:layout_constraintRight_toRightOf="@id/account_editText"
-        app:layout_constraintTop_toBottomOf="@id/password_editText" />
+        app:layout_constraintTop_toBottomOf="@id/phone_editText" />
 
 
     <Button

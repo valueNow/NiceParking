@@ -1,6 +1,5 @@
 package cn.beatle.parking;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -57,7 +56,7 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
     }
 
     private void login() {
-        String account = accountEt.getText().toString();
+        final String account = accountEt.getText().toString();
         if (TextUtils.isEmpty(account)) {
             Toast.makeText(this, getResources().getString(R.string.account_empty), Toast.LENGTH_SHORT).show();
             return;
@@ -75,7 +74,14 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
                 super.onSuccess(status, result);
                 Log.i(LoginActivity.class.getSimpleName(), " status = " + status + " result = " + result+" s = "+result);
                 if(status==200){
-                    Toast.makeText(LoginActivity.this,result,Toast.LENGTH_SHORT).show();
+                    if("err".equals(result)){
+                        Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Prefs.putString(Consts.USER_ID,result);
+                        Prefs.putString(Consts.USER_NAME,account);
+                        setResult(RESULT_OK);
+                        finish();
+                    }
                 }
 
             }

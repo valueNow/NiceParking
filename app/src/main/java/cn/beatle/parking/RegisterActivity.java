@@ -15,7 +15,7 @@ import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
 
 public class RegisterActivity extends BaseFragmentActivity implements View.OnClickListener {
-    private EditText accountEt, passwordEt, carNoEt;
+    private EditText accountEt, passwordEt, phoneEt,carNoEt;
     private Button registerBtn;
 
     @Override
@@ -28,6 +28,7 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
     private void initView() {
         accountEt = findViewById(R.id.account_editText);
         passwordEt = findViewById(R.id.password_editText);
+        phoneEt = findViewById(R.id.phone_editText);
         carNoEt = findViewById(R.id.carNo_editText);
         registerBtn = findViewById(R.id.register_button);
         registerBtn.setOnClickListener(this);
@@ -65,6 +66,16 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
             Toast.makeText(this, getResources().getString(R.string.password_rule), Toast.LENGTH_SHORT).show();
             return ;
         }
+
+        String phone = phoneEt.getText().toString();
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, getResources().getString(R.string.phone_empty), Toast.LENGTH_SHORT).show();
+            return;
+        }else if(!OSUtils.checkPhoneNum(phone)){
+            Toast.makeText(this, getResources().getString(R.string.phone_rule), Toast.LENGTH_SHORT).show();
+            return ;
+        }
+
         String carNo = carNoEt.getText().toString();
         if (TextUtils.isEmpty(carNo)) {
             Toast.makeText(this, getResources().getString(R.string.carNo_empty), Toast.LENGTH_SHORT).show();
@@ -75,7 +86,7 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         }
         StringBuilder register = new StringBuilder(Urls.REGISTER_URL);
         register.append("register_name=").append(account.trim()).append("&register_password=").append(password.trim())
-                .append("&register_license_plate=").append(carNo.trim()).append("&register_tel=").append("13603209765");
+                .append("&register_license_plate=").append(carNo.trim()).append("&register_tel=").append(phone.trim());
         HttpUtil.get(register.toString(),new AsyncHttpResponseHandler(){
             @Override
             public void onSuccess(int status, String s) {
@@ -83,7 +94,8 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
                 Log.i(RegisterActivity.class.getSimpleName()," result = "+s);
                 if(status==200){
                     if("suc".equals(s)){
-                        Toast.makeText(RegisterActivity.this, "register successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "注册成功,请前往登录页面登录", Toast.LENGTH_SHORT).show();
+                        finish();
                     }else{
                         Toast.makeText(RegisterActivity.this, "register failure", Toast.LENGTH_SHORT).show();
                     }

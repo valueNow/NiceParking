@@ -63,7 +63,9 @@
     <string name="account_empty">账号不能为空</string>
     <string name="account_rule">账户需由字母数字下划线组成且开头必须是字母，不能超过16位</string>
     <string name="password_empty">密码不能为空</string>
+    <string name="phone_empty">电话不能为空</string>
     <string name="password_rule">密码需由字母和数字构成，不能超过16位</string>
+    <string name="phone_rule">请输入正确的电话号码</string>
 
     <string name="carNo_empty">车牌号不能为空</string>
     <string name="carNo_rule">车牌号仅允许以汉字开头，后面可录入六个字符，由大写英文字母和阿拉伯数字组成。</string>
@@ -73,5 +75,6 @@
     <string name="parking_rent">车位租赁</string>
     <string name="version_info">版本信息</string>
     <string name="service_center">客服中心</string>
+    <string name="parking_info"><Data><![CDATA[共&#160;%1$d&#160;个车位,剩余&#160;<font color="#196fd4">%2$d</font>&#160;个]]></Data></string>
     <string name="title_activity_parking_details">ParkingDetails</string>
 </resources>
