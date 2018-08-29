@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f8f9"
+    tools:context=".OrderResultActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@mipmap/back_icon_black" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="21dp"
+        android:layout_below="@id/app_bar_layout"
+        android:layout_above="@id/action_button">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/order_result_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="18dp"
+                android:drawableTop="@mipmap/order_failed"
+                android:gravity="center"
+                android:textColor="#196fd4"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="不好意思，预约失败" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/order_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@android:color/white"
+                android:paddingBottom="14dp"
+                android:paddingTop="14dp"
+                app:layout_constraintTop_toBottomOf="@id/order_result_textView">
+
+                <TextView
+                    android:id="@+id/parking_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginStart="23dp"
+                    android:text="停车厂名称"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <TextView
+                    android:id="@+id/parking_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginStart="15dp"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="@id/parking_key"
+                    app:layout_constraintLeft_toRightOf="@id/parking_key"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/parking_key"
+                    tools:text="北京市劳动人民文化宫停车场" />
+
+                <TextView
+                    android:id="@+id/loc_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="停车厂位置"
+                    app:layout_constraintLeft_toLeftOf="@id/parking_key"
+                    app:layout_constraintTop_toBottomOf="@id/parking_key" />
+
+                <TextView
+                    android:id="@+id/loc_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginStart="15dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="@id/loc_key"
+                    app:layout_constraintLeft_toRightOf="@id/loc_key"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/loc_key"
+                    tools:text="北京市东城区东华门街道中国艺术节基金会北京市劳动人民文化宫" />
+
+                <TextView
+                    android:id="@+id/time_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="订单时间"
+                    app:layout_constraintLeft_toLeftOf="@id/parking_key"
+                    app:layout_constraintTop_toBottomOf="@id/loc_key" />
+
+                <TextView
+                    android:id="@+id/time_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginStart="15dp"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="@id/time_key"
+                    app:layout_constraintLeft_toRightOf="@id/time_key"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/time_key"
+                    tools:text="08/20 21:34:56" />
+            </android.support.constraint.ConstraintLayout>
+
+            <com.amap.api.maps2d.MapView
+                android:id="@+id/map"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="32dp"
+                android:minHeight="200dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/order_info_layout"
+                tools:ignore="MissingConstraints" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="23dp"
+        android:background="@drawable/order_bg_solid_shape"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_alignParentBottom="true"
+        tools:text="重新预约" />
+</RelativeLayout>

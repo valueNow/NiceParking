@@ -85,7 +85,7 @@
         <activity android:name=".LaunchActivity" />
         <activity android:name=".RetrievePwdActivity" />
         <activity android:name=".ParkingDetails" />
-
+        <activity android:name=".OrderResultActivity"></activity>
     </application>
 
 </manifest>

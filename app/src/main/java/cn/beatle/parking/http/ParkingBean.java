@@ -1,6 +1,6 @@
 package cn.beatle.parking.http;
 
-public class ParkingBean {
+public class    ParkingBean {
 
     /**
      * img : http://114.215.45.240:90/img/station/67.jpg
@@ -25,6 +25,7 @@ public class ParkingBean {
     private String address;
     private String number;
     private String id;
+    public boolean orderSucc;
 
     public String getImg() {
         return img;

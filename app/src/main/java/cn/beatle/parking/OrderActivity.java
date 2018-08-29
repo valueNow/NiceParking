@@ -1,13 +1,10 @@
 package cn.beatle.parking;
 
-import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -33,6 +28,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
     private Button order;
     private int height;
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +77,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.order_button:
                 order();
                 break;
@@ -91,24 +87,31 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
     }
 
     private void order() {
-        if(!isLogin(true)){
+        if (!isLogin(true)) {
             return;
         }
         StringBuilder order = new StringBuilder(Urls.ORDER_URL);
         order.append("park_id=").append(parkingBean.getId()).append("&park_name=").append(parkingBean.getName())
                 .append("&book_st=").append("201808280900").append("&book_ed=").append("201808282000").append("&book_account=")
                 .append(getAccount());
-        HttpUtil.get(order.toString(),new AsyncHttpResponseHandler(){
+        HttpUtil.get(order.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, String s) {
                 super.onSuccess(i, s);
-                Log.i(OrderActivity.class.getSimpleName(),"result = "+s);
-                if(i==200){
-                    if("suc".equals(s)){
-                        // TODO: 2018/8/28 order success, jump to order status page
-                    }else{
-                        // TODO: 2018/8/28 order success, jump to order status page
+                Log.i(OrderActivity.class.getSimpleName(), "result = " + s);
+                if (i == 200) {
+                    Intent orderResult = new Intent(OrderActivity.this, OrderResultActivity.class);
+                    if ("suc".equals(s)) {
+                        parkingBean.orderSucc = true;
+                    } else {
+                        parkingBean.orderSucc = false;
                     }
+                    orderResult.putExtra(Consts.ORDER_INFO, gson.toJson(parkingBean, new TypeToken<ParkingBean>() {
+                    }.getType()));
+                    startActivity(orderResult);
+                    finish();
+                }else{
+                    Toast.makeText(OrderActivity.this,"预约失败",Toast.LENGTH_SHORT).show();
                 }
             }
 
