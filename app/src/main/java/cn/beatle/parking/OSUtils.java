@@ -1,8 +1,12 @@
 package cn.beatle.parking;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -103,6 +107,25 @@ public class OSUtils {
         System.out.println(isCarnumberNO("粤B12345"));
 
 
+    }
+
+    /**
+     * 检查手机上是否安装了指定的软件
+     *
+     * @param context
+     * @param packageName：应用包名
+     * @return
+     */
+    public static boolean isInstalled(Context context, String packageName) {
+        final PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
+                String pkName = packageInfos.get(i).packageName;
+                if (pkName.equals(packageName)) return true;
+            }
+        }
+        return false;
     }
 
 }
