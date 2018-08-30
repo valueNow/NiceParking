@@ -5,30 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f7f8f9"
-    tools:context=".OrderResultActivity">
+    tools:context=".activity.OrderResultActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_layout"
+    <cn.beatle.parking.view.TitleBar
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:fitsSystemWindows="true">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:contentInsetStart="0dp"
-            app:navigationIcon="@mipmap/back_icon_black" />
-
-    </android.support.design.widget.AppBarLayout>
+        android:minHeight="@dimen/all_topbar"
+        app:background_color="@color/white"
+        app:leftDrawable="@mipmap/back_icon_black"
+        app:statusbar_light="true"
+        app:title_text="预约失败" />
 
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="21dp"
-        android:layout_below="@id/app_bar_layout"
+        android:layout_below="@id/title_bar"
         android:layout_above="@id/action_button">
 
         <android.support.constraint.ConstraintLayout

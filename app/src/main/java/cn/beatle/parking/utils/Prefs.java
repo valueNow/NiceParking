@@ -1,4 +1,4 @@
-package cn.beatle.parking;
+package cn.beatle.parking.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

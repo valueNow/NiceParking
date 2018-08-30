@@ -56,7 +56,7 @@
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,13 +79,14 @@
             android:name=".locationDemo.Jump2Amap_Activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".OrderActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LaunchActivity" />
-        <activity android:name=".RetrievePwdActivity" />
-        <activity android:name=".ParkingDetails" />
-        <activity android:name=".OrderResultActivity"></activity>
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LaunchActivity" />
+        <activity android:name=".activity.RetrievePwdActivity" />
+        <activity android:name=".activity.ParkingDetails" />
+        <activity android:name=".activity.OrderResultActivity" />
+        <activity android:name=".activity.OrderListActivity"></activity>
     </application>
 
 </manifest>

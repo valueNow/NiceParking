@@ -1,7 +1,8 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import cn.beatle.parking.R;
 
 public class RetrievePwdActivity extends BaseFragmentActivity {
 

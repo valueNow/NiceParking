@@ -1,4 +1,4 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +32,9 @@ import com.amap.api.maps2d.UiSettings;
 
 import java.lang.ref.WeakReference;
 
+import cn.beatle.parking.Consts;
+import cn.beatle.parking.utils.Prefs;
+import cn.beatle.parking.R;
 import cn.beatle.parking.http.JSAction;
 import cn.beatle.parking.http.Urls;
 import cn.beatle.parking.locationDemo.Jump2Amap_Activity;
@@ -194,8 +196,10 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.my_orders:
-                Intent intent_parking_details = new Intent(MainActivity.this, ParkingDetails.class);
-                startActivity(intent_parking_details);
+//                Intent intent_parking_details = new Intent(MainActivity.this, ParkingDetails.class);
+//                startActivity(intent_parking_details);
+                Intent orderList = new Intent(this,OrderListActivity.class);
+                startActivity(orderList);
                 break;
             case R.id.parking_rent:
                 break;

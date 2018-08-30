@@ -1,9 +1,12 @@
-package cn.beatle.parking;
+package cn.beatle.parking.utils;
 
 import android.view.View;
 import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
+
+import cn.beatle.parking.ParkingApplication;
+import cn.beatle.parking.R;
 
 public class VolleyUtils {
     public static void loadImage(String url, View view) {

@@ -1,10 +1,9 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,11 +26,15 @@ import com.google.gson.reflect.TypeToken;
 
 import java.net.URISyntaxException;
 
+import cn.beatle.parking.Consts;
+import cn.beatle.parking.R;
 import cn.beatle.parking.http.ParkingBean;
+import cn.beatle.parking.utils.OSUtils;
+import cn.beatle.parking.view.TitleBar;
 
 public class OrderResultActivity extends BaseFragmentActivity implements AMapLocationListener{
     private ParkingBean parkingBean;
-    private Toolbar toolbar;
+    private TitleBar titleBar;
     private TextView orderResTv, parkingName, parkingLoc, orderTime;
     private MapView mapView;
     private Button actionBtn;
@@ -51,8 +54,8 @@ public class OrderResultActivity extends BaseFragmentActivity implements AMapLoc
     }
 
     private void initView(Bundle savedInstanceState) {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        titleBar = findViewById(R.id.title_bar);
+        titleBar.setLeftBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -113,12 +116,12 @@ public class OrderResultActivity extends BaseFragmentActivity implements AMapLoc
         parkingBean = gson.fromJson(getIntent().getStringExtra(Consts.ORDER_INFO), new TypeToken<ParkingBean>() {
         }.getType());
         if (parkingBean.orderSucc) {
-            toolbar.setTitle("预约成功");
+            titleBar.setTitle("预约成功");
             orderResTv.setText("恭喜您，预约成功");
             orderResTv.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.order_succ, 0, 0);
             actionBtn.setText("导航过去");
         } else {
-            toolbar.setTitle("预约失败");
+            titleBar.setTitle("预约失败");
             orderResTv.setText("不好意思，预约失败");
             orderResTv.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.order_failed, 0, 0);
             actionBtn.setText("重新预约");

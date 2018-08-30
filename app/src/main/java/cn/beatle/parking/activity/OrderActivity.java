@@ -1,4 +1,4 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import cn.beatle.parking.Consts;
+import cn.beatle.parking.R;
+import cn.beatle.parking.utils.VolleyUtils;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.ParkingBean;
 import cn.beatle.parking.http.Urls;

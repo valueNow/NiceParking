@@ -10,11 +10,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
+import cn.beatle.parking.utils.Prefs;
+
 /**
  * Created by hongming.wang on 2018/1/23.
  */
 
 public class ParkingApplication extends Application{
+    private static ParkingApplication sInstance;
     private int count = 0;
     private static ImageLoader imageLoader;
 
@@ -44,6 +47,7 @@ public class ParkingApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
@@ -93,5 +97,9 @@ public class ParkingApplication extends Application{
 
     public static ImageLoader getImageLoader() {
         return imageLoader;
+    }
+
+    public static ParkingApplication getInstance() {
+        return sInstance;
     }
 }

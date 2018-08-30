@@ -1,14 +1,19 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import cn.beatle.parking.Consts;
+import cn.beatle.parking.utils.OSUtils;
+import cn.beatle.parking.utils.Prefs;
+import cn.beatle.parking.R;
+import cn.beatle.parking.StatusBarLight;
 
 /**
  * @author coolyou|M

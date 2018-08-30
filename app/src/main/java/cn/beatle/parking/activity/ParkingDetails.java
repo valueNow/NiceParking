@@ -1,7 +1,9 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import cn.beatle.parking.R;
 
 public class ParkingDetails extends Activity {
 

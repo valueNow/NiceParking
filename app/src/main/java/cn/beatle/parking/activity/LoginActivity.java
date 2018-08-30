@@ -1,4 +1,4 @@
-package cn.beatle.parking;
+package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import cn.beatle.parking.Consts;
+import cn.beatle.parking.utils.Prefs;
+import cn.beatle.parking.R;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
 

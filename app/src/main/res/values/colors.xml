@@ -21,7 +21,9 @@
 
     <color name="t1">#efefef</color>
     <color name="t2">#FF009DFF</color>
+    <color name="l_title_bar_title_color">#333333</color>
+    <color name="button_pressed_bg">#26000000</color>
+    <color name="l_title_bar_color">#FFFFFFFF</color><!--新版背景-->
 
-
-
+    <color name="unify_bg_color">#f7f8f9</color>
 </resources>

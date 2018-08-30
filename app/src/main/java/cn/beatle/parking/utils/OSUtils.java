@@ -1,14 +1,18 @@
-package cn.beatle.parking;
+package cn.beatle.parking.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import cn.beatle.parking.ParkingApplication;
 
 public class OSUtils {
     private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
@@ -18,6 +22,16 @@ public class OSUtils {
     private static final String KEY_FLYME_SETUP_FALG = "ro.meizu.setupwizard.flyme";
     private static final String KEY_FLYME_PUBLISH_FALG = "ro.flyme.published";
     private static final String KEY_DISPLAY = "ro.build.display.id";
+    private static int mStatusBarHeight=-1;
+    public final static float DENSITY;
+
+    static {
+        DisplayMetrics dms = new DisplayMetrics();
+        WindowManager m = (WindowManager) ParkingApplication.getInstance()
+                .getSystemService(Context.WINDOW_SERVICE);
+        m.getDefaultDisplay().getMetrics(dms);
+        DENSITY = dms.density;
+    }
 
     public static boolean isMIUI() {
         String propertyName = getSystemProperty(KEY_MIUI_VERSION_NAME, "");
@@ -127,5 +141,36 @@ public class OSUtils {
         }
         return false;
     }
+
+    /**
+     * 获取状态栏高度
+     * @param context
+     * @return
+     */
+    public static int getStatusBarHeight(Context context) {
+        if (mStatusBarHeight == -1) {
+            int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                mStatusBarHeight = context.getResources().getDimensionPixelSize(resourceId);
+            } else {
+                mStatusBarHeight = dip2px(25);
+            }
+        }
+        return mStatusBarHeight;
+    }
+
+    /**
+     * dip->Px
+     *
+     * @param dipValue
+     * @return
+     */
+    public static int dip2px(float dipValue) {
+        if (dipValue == 0)
+            return (int) dipValue;
+        return (int) (dipValue * DENSITY + 0.5f);
+
+    }
+
 
 }
