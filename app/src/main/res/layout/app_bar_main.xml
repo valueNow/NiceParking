@@ -42,7 +42,7 @@
         android:background="#00000000"
         android:src="@android:drawable/ic_menu_mylocation"
         app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="right|center" />
+        app:layout_anchorGravity="right|bottom" />
 
 
 </android.support.design.widget.CoordinatorLayout>
