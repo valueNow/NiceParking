@@ -2,7 +2,6 @@ package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +21,7 @@ import cn.beatle.parking.utils.VolleyUtils;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.ParkingBean;
 import cn.beatle.parking.http.Urls;
+import cn.beatle.parking.view.TitleBar;
 
 public class OrderActivity extends BaseFragmentActivity implements View.OnClickListener {
     private ParkingBean parkingBean;
@@ -30,7 +30,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
     private TextView name, address, parkingInfo, openTime, tel;
     private Button order;
     private int height;
-    private Toolbar toolbar;
+    private TitleBar titleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
     }
 
     private void initView() {
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        titleBar = findViewById(R.id.title_bar);
+        titleBar.setLeftBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
