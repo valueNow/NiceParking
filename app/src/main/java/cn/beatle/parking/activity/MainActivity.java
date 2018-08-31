@@ -192,10 +192,10 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.my_orders:
-//                Intent intent_parking_details = new Intent(MainActivity.this, ParkingDetails.class);
-//                startActivity(intent_parking_details);
-                Intent orderList = new Intent(this,OrderListActivity.class);
-                startActivity(orderList);
+                if(isLogin(true)){
+                    Intent orderList = new Intent(this,OrderListActivity.class);
+                    startActivity(orderList);
+                }
                 break;
             case R.id.parking_rent:
                 break;

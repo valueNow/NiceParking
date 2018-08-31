@@ -10,4 +10,5 @@ public class Urls {
     public static final String LOGIN_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_login?";
     public static final String REGISTER_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_register?";
     public static final String ORDER_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_addorder?";
+    public static final String GET_ORDERS_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_getorderbyaccountid?";
 }

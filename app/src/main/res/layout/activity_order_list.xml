@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         app:background_color="@color/white"
         app:leftDrawable="@mipmap/back_icon_black"
+        android:minHeight="@dimen/all_topbar"
         app:statusbar_light="true"
         app:title_text="订单列表" />
 
@@ -20,8 +21,7 @@
         android:id="@+id/orders_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/all_topbar"
-        app:layout_constraintTop_toBottomOf="@id/title_bar"
+        android:layout_below="@id/title_bar"
         android:cacheColorHint="@android:color/transparent"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
@@ -30,4 +30,4 @@
         android:fadingEdgeLength="0dp"
         android:listSelector="@android:color/transparent"
         android:scrollbarStyle="outsideOverlay"/>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
