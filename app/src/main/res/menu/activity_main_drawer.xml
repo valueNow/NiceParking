@@ -26,7 +26,7 @@
             android:title="@string/service_center" />
     </group>
 
-    <item android:title="上面没用，点击下面的试试">
+  <!--  <item android:title="上面没用，点击下面的试试">
         <menu>
             <item
                 android:id="@+id/item_location"
@@ -50,6 +50,6 @@
                 android:title="@string/login" />
         </menu>
 
-    </item>
+    </item>-->
 
 </menu>

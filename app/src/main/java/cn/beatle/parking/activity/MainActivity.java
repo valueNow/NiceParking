@@ -33,14 +33,10 @@ import com.amap.api.maps2d.UiSettings;
 import java.lang.ref.WeakReference;
 
 import cn.beatle.parking.Consts;
-import cn.beatle.parking.utils.Prefs;
 import cn.beatle.parking.R;
 import cn.beatle.parking.http.JSAction;
 import cn.beatle.parking.http.Urls;
-import cn.beatle.parking.locationDemo.Jump2Amap_Activity;
-import cn.beatle.parking.locationDemo.LastLocation_Activity;
-import cn.beatle.parking.locationDemo.Location_Activity;
-import cn.beatle.parking.locationDemo.Location_BackGround_Activity;
+import cn.beatle.parking.utils.Prefs;
 
 
 public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -209,7 +205,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 break;
             case R.id.service_center:
                 break;
-            case R.id.item_location:
+           /* case R.id.item_location:
                 Intent intent = new Intent(MainActivity.this, Location_Activity.class);
                 startActivity(intent);
                 break;
@@ -229,7 +225,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
             case R.id.item_login:
                 Intent login = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(login);
-                break;
+                break;*/
             default:
                 break;
         }
