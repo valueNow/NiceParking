@@ -27,17 +27,17 @@
         app:layout_constraintTop_toBottomOf="@id/title_bar" />
 
     <EditText
-        android:id="@+id/phone_editText"
+        android:id="@+id/password_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/login_form_bg_shape"
-        android:drawableLeft="@mipmap/tel_icon"
+        android:drawableLeft="@mipmap/password_icon"
         android:drawablePadding="5dp"
-        android:drawableStart="@mipmap/tel_icon"
-        android:hint="请输入电话"
+        android:drawableStart="@mipmap/password_icon"
+        android:hint="请输入旧密码"
         android:inputType="phone"
         android:maxLength="11"
         android:padding="12dp"
@@ -63,9 +63,9 @@
         android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@id/phone_editText"
-        app:layout_constraintRight_toRightOf="@id/phone_editText"
-        app:layout_constraintTop_toBottomOf="@id/phone_editText" />
+        app:layout_constraintLeft_toLeftOf="@id/password_edittext"
+        app:layout_constraintRight_toRightOf="@id/password_edittext"
+        app:layout_constraintTop_toBottomOf="@id/password_edittext" />
 
     <EditText
         android:id="@+id/confirm_password_editText"
@@ -82,8 +82,8 @@
         android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@id/phone_editText"
-        app:layout_constraintRight_toRightOf="@id/phone_editText"
+        app:layout_constraintLeft_toLeftOf="@id/password_edittext"
+        app:layout_constraintRight_toRightOf="@id/password_edittext"
         app:layout_constraintTop_toBottomOf="@id/new_password_editText" />
 
     <Button
@@ -95,8 +95,8 @@
         android:text="提交"
         android:textColor="#1972d6"
         android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="@id/phone_editText"
-        app:layout_constraintRight_toRightOf="@id/phone_editText"
+        app:layout_constraintLeft_toLeftOf="@id/password_edittext"
+        app:layout_constraintRight_toRightOf="@id/password_edittext"
         app:layout_constraintTop_toBottomOf="@id/confirm_password_editText" />
 
 </android.support.constraint.ConstraintLayout>

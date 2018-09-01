@@ -200,6 +200,8 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
             case R.id.parking_rent:
                 break;
             case R.id.system_setting:
+                Intent orderList = new Intent(this,SettingActivity.class);
+                startActivity(orderList);
                 break;
             case R.id.version_info:
                 break;

@@ -17,12 +17,13 @@ import cn.beatle.parking.utils.Prefs;
 import cn.beatle.parking.R;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
+import cn.beatle.parking.view.TitleBar;
 
 public class LoginActivity extends BaseFragmentActivity implements View.OnClickListener {
     private EditText accountEt, passwordEt;
     private TextView forgetPWTv, registerTv;
     private Button loginBtn;
-
+    private TitleBar titleBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +32,16 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
     }
 
     private void initView() {
+        titleBar = findViewById(R.id.title_bar);
+        titleBar.showBottomLine(false);
+        titleBar.setLeftBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         accountEt = findViewById(R.id.account_editText);
-        passwordEt = findViewById(R.id.password_editText);
+        passwordEt = findViewById(R.id.tel_editText);
         forgetPWTv = findViewById(R.id.forget_password);
         registerTv = findViewById(R.id.register_tips);
         loginBtn = findViewById(R.id.login_button);
