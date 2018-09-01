@@ -11,13 +11,29 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            storeFile file("NiceParking.keystore")
+            storePassword "niceparking"
+            keyAlias "NiceParking"
+            keyPassword "niceparking"
+        }
+
+    }
+
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 }

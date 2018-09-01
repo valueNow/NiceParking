@@ -89,8 +89,7 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
                     if("err".equals(result)){
                         Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                     }else{
-                        Prefs.putString(Consts.USER_ID,result);
-                        Prefs.putString(Consts.USER_NAME,account);
+                        Prefs.putString(Consts.USER_INFO,result);
                         setResult(RESULT_OK);
                         finish();
                     }
