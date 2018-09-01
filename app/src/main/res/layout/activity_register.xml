@@ -7,19 +7,28 @@
     android:background="@mipmap/login"
     tools:context=".activity.RegisterActivity">
 
+    <cn.beatle.parking.view.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/all_topbar"
+        app:background_color="@android:color/transparent"
+        app:leftDrawable="@mipmap/back_icon"
+        app:statusbar_light="true" />
+
     <TextView
         android:id="@+id/tips"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="请注册账号"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/title_bar" />
 
     <EditText
         android:id="@+id/account_editText"
@@ -44,7 +53,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/password_editText"
+        android:id="@+id/tel_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -68,19 +77,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/login_form_bg_shape"
-        android:drawableLeft="@mipmap/password_icon"
+        android:drawableLeft="@mipmap/tel_icon"
         android:drawablePadding="5dp"
-        android:drawableStart="@mipmap/password_icon"
+        android:drawableStart="@mipmap/tel_icon"
         android:hint="请输入电话"
-        android:maxLength="11"
         android:inputType="phone"
+        android:maxLength="11"
         android:padding="12dp"
         android:textColor="@android:color/white"
         android:textColorHint="#79bdff"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/account_editText"
         app:layout_constraintRight_toRightOf="@id/account_editText"
-        app:layout_constraintTop_toBottomOf="@id/password_editText" />
+        app:layout_constraintTop_toBottomOf="@id/tel_editText" />
 
     <EditText
         android:id="@+id/carNo_editText"
@@ -91,8 +100,8 @@
         android:drawableLeft="@mipmap/password_icon"
         android:drawablePadding="5dp"
         android:drawableStart="@mipmap/car_no"
-        android:inputType="textCapWords"
         android:hint="请输入车牌号"
+        android:inputType="textCapWords"
         android:padding="12dp"
         android:textColor="@android:color/white"
         android:textColorHint="#79bdff"

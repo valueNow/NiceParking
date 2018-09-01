@@ -119,7 +119,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
 
         mapWebView.setWebChromeClient(new WebChromeClient());
         avatarImg = findViewById(R.id.imageView);
-        userName = findViewById(R.id.textView);
+        userName = findViewById(R.id.tel_textView);
         initLoginState();
 
     }
@@ -127,7 +127,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
     private void initLoginState() {
         if(userName==null || avatarImg==null){
             avatarImg = findViewById(R.id.imageView);
-            userName = findViewById(R.id.textView);
+            userName = findViewById(R.id.tel_textView);
         }
         if(userName==null || avatarImg==null)return;
         if(isLogin()){
@@ -202,6 +202,8 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 startActivity(parking_ret_intent);
                 break;
             case R.id.system_setting:
+                Intent orderList = new Intent(this,SettingActivity.class);
+                startActivity(orderList);
                 break;
             case R.id.version_info:
                 break;

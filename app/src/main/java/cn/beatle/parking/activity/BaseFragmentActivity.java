@@ -140,4 +140,9 @@ public class BaseFragmentActivity extends FragmentActivity{
         super.onDestroy();
     }
 
+    protected void clearData(){
+        Prefs.putString(Consts.USER_ID,"");
+        Prefs.putString(Consts.USER_NAME,"");
+    }
+
 }
