@@ -12,6 +12,5 @@ public class Urls {
     public static final String ORDER_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_addorder?";
     public static final String GET_ORDERS_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_getorderbyaccountid?";
     public static final String UPDATE_PWD_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_updpwd?";
-//    account_id=1A02889A-A432-630C-9643-81B778D0B78A&password=222&oldpassword=11111
     public static final String RETRIEVE_PWD_URL = "http://114.215.45.240:82/index.php/admin/spot_interest/ajax_retrievepwd?";
 }

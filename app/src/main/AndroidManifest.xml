@@ -92,6 +92,9 @@
         <activity android:name=".activity.ParkingRentingActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.ServiceCenter"></activity>
+
+        <activity android:name=".activity.UpdatePwdActivity"/>
+
     </application>
 
 </manifest>

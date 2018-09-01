@@ -89,7 +89,7 @@ public class UpdatePwdActivity extends BaseFragmentActivity {
                 super.onSuccess(status, s);
                 if(status==200){
                     if("suc".equals(s)){
-                        Toast.makeText(UpdatePwdActivity.this,"修改密码成功，请前往登录",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdatePwdActivity.this,"修改密码成功，下次登录请使用新密码哦",Toast.LENGTH_SHORT).show();
                         finish();
                     }else{
                         Toast.makeText(UpdatePwdActivity.this,"修改密码失败",Toast.LENGTH_SHORT).show();
