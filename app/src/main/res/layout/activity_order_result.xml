@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="23dp"
                     android:layout_marginStart="23dp"
-                    android:text="停车厂名称"
+                    android:text="停车场名称"
                     app:layout_constraintLeft_toLeftOf="parent" />
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:text="停车厂位置"
+                    android:text="停车位置"
                     app:layout_constraintLeft_toLeftOf="@id/parking_key"
                     app:layout_constraintTop_toBottomOf="@id/parking_key" />
 

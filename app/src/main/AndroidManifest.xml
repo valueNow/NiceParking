@@ -79,15 +79,17 @@
             android:name=".locationDemo.Jump2Amap_Activity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".activity.OrderActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.OrderActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LaunchActivity" />
         <activity android:name=".activity.RetrievePwdActivity" />
         <activity android:name=".activity.ParkingDetails" />
         <activity android:name=".activity.OrderResultActivity" />
-        <activity android:name=".activity.OrderListActivity"></activity>
+        <activity android:name=".activity.OrderListActivity" />
+        <activity android:name=".activity.ParkingRentingActivity"/>
     </application>
 
 </manifest>

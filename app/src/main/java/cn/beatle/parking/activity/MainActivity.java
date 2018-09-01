@@ -198,6 +198,8 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 }
                 break;
             case R.id.parking_rent:
+                Intent parking_ret_intent = new Intent(this,ParkingRentingActivity.class);
+                startActivity(parking_ret_intent);
                 break;
             case R.id.system_setting:
                 break;
