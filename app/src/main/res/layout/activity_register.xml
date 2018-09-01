@@ -124,15 +124,4 @@
         app:layout_constraintRight_toRightOf="@id/account_editText"
         app:layout_constraintTop_toBottomOf="@id/carNo_editText" />
 
-    <TextView
-        android:id="@+id/register_tips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="已有账号请登录"
-        android:textColor="#52acff"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="@id/register_button"
-        app:layout_constraintTop_toBottomOf="@id/register_button" />
-
 </android.support.constraint.ConstraintLayout>

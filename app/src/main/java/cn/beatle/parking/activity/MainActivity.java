@@ -1,15 +1,20 @@
 package cn.beatle.parking.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +63,16 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
     private MyHandler mHandler;
     private ImageView avatarImg;
     private TextView telTextView,carNoTextView;
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(!TextUtils.isEmpty(action)){
+                initLoginState();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +139,10 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         telTextView = findViewById(R.id.tel_textView);
         carNoTextView = findViewById(R.id.carNo_textView);
         initLoginState();
-
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Consts.LOGIN_ACTION);
+        filter.addAction(Consts.LOGOUT_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver,filter);
     }
 
     private void initLoginState() {
@@ -135,6 +153,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         }
         if(telTextView ==null || avatarImg==null)return;
         if(isLogin()){
+            carNoTextView.setVisibility(View.VISIBLE);
             if(ParkingApplication.getInstance().getUserInfo()==null){
                 ParkingApplication.getInstance().initUserInfo();
             }
@@ -142,6 +161,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
             telTextView.setText(userInfo.getTel());
             carNoTextView.setText(userInfo.getLicense_plate());
             avatarImg.setOnClickListener(null);
+            findViewById(R.id.userInfo_layout).setOnClickListener(null);
         }else{
             telTextView.setText("未登录");
             findViewById(R.id.userInfo_layout).setOnClickListener(new View.OnClickListener() {
@@ -151,6 +171,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                     startActivityForResult(login,0);
                 }
             });
+            carNoTextView.setVisibility(View.GONE);
         }
     }
 
@@ -307,6 +328,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         if (null != mlocationClient) {
             mlocationClient.onDestroy();
         }
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
     }
 
     /**

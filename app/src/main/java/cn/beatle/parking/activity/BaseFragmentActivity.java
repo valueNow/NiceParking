@@ -146,6 +146,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 
     protected void clearData() {
         Prefs.putString(Consts.USER_INFO, "");
+        ParkingApplication.getInstance().setUserInfo(null);
     }
 
 }

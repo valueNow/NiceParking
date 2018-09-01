@@ -2,6 +2,7 @@ package cn.beatle.parking.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +14,10 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import cn.beatle.parking.Consts;
-import cn.beatle.parking.utils.Prefs;
 import cn.beatle.parking.R;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
+import cn.beatle.parking.utils.Prefs;
 import cn.beatle.parking.view.TitleBar;
 
 public class LoginActivity extends BaseFragmentActivity implements View.OnClickListener {
@@ -91,6 +92,8 @@ public class LoginActivity extends BaseFragmentActivity implements View.OnClickL
                     }else{
                         Prefs.putString(Consts.USER_INFO,result);
                         setResult(RESULT_OK);
+                        Intent login = new Intent(Consts.LOGIN_ACTION);
+                        LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(login);
                         finish();
                     }
                 }
