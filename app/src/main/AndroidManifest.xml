@@ -90,7 +90,8 @@
         <activity android:name=".activity.OrderResultActivity" />
         <activity android:name=".activity.OrderListActivity" />
         <activity android:name=".activity.ParkingRentingActivity"/>
-        <activity android:name=".activity.SettingActivity"></activity>
+        <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.UpdatePwdActivity"/>
 
     </application>
 

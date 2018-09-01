@@ -25,6 +25,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cn.beatle.parking.Consts;
 import cn.beatle.parking.R;
@@ -125,6 +127,14 @@ public class OrderResultActivity extends BaseFragmentActivity implements AMapLoc
             orderResTv.setText("不好意思，预约失败");
             orderResTv.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.order_failed, 0, 0);
             actionBtn.setText("重新预约");
+        }
+        try {
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
+            SimpleDateFormat sdfT = new SimpleDateFormat("MM/dd  HH:mm:ss");
+//            orderTime.setText(sdfT.format(sdf.parse(parkingBean.getId())));
+            orderTime.setText(sdfT.format(new Date()));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         parkingName.setText(parkingBean.getName());
         parkingLoc.setText(parkingBean.getAddress());
