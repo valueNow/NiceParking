@@ -33,9 +33,11 @@ import com.amap.api.maps2d.UiSettings;
 import java.lang.ref.WeakReference;
 
 import cn.beatle.parking.Consts;
+import cn.beatle.parking.ParkingApplication;
 import cn.beatle.parking.R;
 import cn.beatle.parking.http.JSAction;
 import cn.beatle.parking.http.Urls;
+import cn.beatle.parking.http.UserInfo;
 import cn.beatle.parking.utils.Prefs;
 
 
@@ -55,7 +57,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
     private WebView mapWebView;
     private MyHandler mHandler;
     private ImageView avatarImg;
-    private TextView userName;
+    private TextView telTextView,carNoTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,23 +121,30 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
 
         mapWebView.setWebChromeClient(new WebChromeClient());
         avatarImg = findViewById(R.id.imageView);
-        userName = findViewById(R.id.tel_textView);
+        telTextView = findViewById(R.id.tel_textView);
+        carNoTextView = findViewById(R.id.carNo_textView);
         initLoginState();
 
     }
 
     private void initLoginState() {
-        if(userName==null || avatarImg==null){
+        if(telTextView ==null || avatarImg==null){
             avatarImg = findViewById(R.id.imageView);
-            userName = findViewById(R.id.tel_textView);
+            telTextView = findViewById(R.id.tel_textView);
+            carNoTextView = findViewById(R.id.carNo_textView);
         }
-        if(userName==null || avatarImg==null)return;
+        if(telTextView ==null || avatarImg==null)return;
         if(isLogin()){
-            userName.setText(Prefs.getString(Consts.USER_NAME,""));
+            if(ParkingApplication.getInstance().getUserInfo()==null){
+                ParkingApplication.getInstance().initUserInfo();
+            }
+            UserInfo userInfo = ParkingApplication.getInstance().getUserInfo();
+            telTextView.setText(userInfo.getTel());
+            carNoTextView.setText(userInfo.getLicense_plate());
             avatarImg.setOnClickListener(null);
         }else{
-            userName.setText("未登录");
-            avatarImg.setOnClickListener(new View.OnClickListener() {
+            telTextView.setText("未登录");
+            findViewById(R.id.userInfo_layout).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent login = new Intent(MainActivity.this,LoginActivity.class);

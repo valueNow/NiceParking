@@ -69,18 +69,23 @@ public class OrderListActivity extends BaseFragmentActivity {
                     if ("err".equals(s)) {
                         Toast.makeText(OrderListActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();
                     } else {
-                        List<OrderBean> list = gson.fromJson(s, new TypeToken<ArrayList<OrderBean>>() {
-                        }.getType());
-                        if (list != null && list.size() > 0) {
-                            for(OrderBean order:list){
-                                order.setParkingBeanState();
-                                order.setCarNo();
-                                order.formatTime();
+                        try {
+                            List<OrderBean> list = gson.fromJson(s, new TypeToken<ArrayList<OrderBean>>() {
+                            }.getType());
+                            if (list != null && list.size() > 0) {
+                                for(OrderBean order:list){
+                                    order.setParkingBeanState();
+                                    order.setCarNo();
+                                    order.formatTime();
+                                }
+                                mData.addAll(list);
+                                mAdapter.notifyDataSetChanged();
+                            } else {
+    //                            listView.setEmptyView();
                             }
-                            mData.addAll(list);
-                            mAdapter.notifyDataSetChanged();
-                        } else {
-//                            listView.setEmptyView();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(OrderListActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

@@ -10,19 +10,20 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import cn.beatle.parking.Consts;
-import cn.beatle.parking.utils.OSUtils;
-import cn.beatle.parking.utils.Prefs;
+import cn.beatle.parking.ParkingApplication;
 import cn.beatle.parking.R;
 import cn.beatle.parking.StatusBarLight;
+import cn.beatle.parking.utils.OSUtils;
+import cn.beatle.parking.utils.Prefs;
 
 /**
  * @author coolyou|M
  */
-public class BaseFragmentActivity extends FragmentActivity{
+public class BaseFragmentActivity extends FragmentActivity {
 
 
     private static final int STATUS_LOGIN_QQ = 1;
-    private static final int STATUS_SHARE_QQ = STATUS_LOGIN_QQ+1;
+    private static final int STATUS_SHARE_QQ = STATUS_LOGIN_QQ + 1;
 
     private static final int STATUS_LOGIN_SINA = STATUS_SHARE_QQ + 1;
 
@@ -34,12 +35,12 @@ public class BaseFragmentActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isTransparencyStatus())setupTransparencyStatus();
+        if (isTransparencyStatus()) setupTransparencyStatus();
         prepareSlideToFinish();
 
     }
 
-    protected boolean isTransparencyStatus(){
+    protected boolean isTransparencyStatus() {
         return true;
     }
 
@@ -69,18 +70,18 @@ public class BaseFragmentActivity extends FragmentActivity{
             window.setStatusBarColor(getResources().getColor(R.color.transparent));
         }
 
-        if(isLightStatusBar())setupLightStatus();
+        if (isLightStatusBar()) setupLightStatus();
     }
 
-    protected void setupLightStatus(){
+    protected void setupLightStatus() {
         if (OSUtils.isFlyme()) {
-            StatusBarLight.setFlymeStatusBarLightMode(this,true);
+            StatusBarLight.setFlymeStatusBarLightMode(this, true);
         } else if (OSUtils.isMIUI()) {
-            StatusBarLight.setMiuiStatusBarLightMode(this,true);
+            StatusBarLight.setMiuiStatusBarLightMode(this, true);
         }
     }
 
-    protected boolean isLightStatusBar(){
+    protected boolean isLightStatusBar() {
         return true;
     }
 
@@ -94,30 +95,33 @@ public class BaseFragmentActivity extends FragmentActivity{
         }
     }
 
-    protected boolean isLogin(){
-        String userID = Prefs.getString(Consts.USER_ID,"");
-        if(TextUtils.isEmpty(userID)){
+    protected boolean isLogin() {
+        String userInfo = Prefs.getString(Consts.USER_INFO, "");
+        if (TextUtils.isEmpty(userInfo)) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    protected boolean isLogin(boolean guide){
-        String userID = Prefs.getString(Consts.USER_ID,"");
-        if(TextUtils.isEmpty(userID)){
-            if(guide){
-                Intent intent = new Intent(this,LoginActivity.class);
+    protected boolean isLogin(boolean guide) {
+        String userInfo = Prefs.getString(Consts.USER_INFO, "");
+        if (TextUtils.isEmpty(userInfo)) {
+            if (guide) {
+                Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    protected String getAccount(){
-        return Prefs.getString(Consts.USER_ID,"");
+    protected String getAccount() {
+        if (ParkingApplication.getInstance().getUserInfo() == null) {
+            ParkingApplication.getInstance().initUserInfo();
+        }
+        return ParkingApplication.getInstance().getUserInfo().getAccount_id();
     }
 
     @Override
@@ -140,9 +144,8 @@ public class BaseFragmentActivity extends FragmentActivity{
         super.onDestroy();
     }
 
-    protected void clearData(){
-        Prefs.putString(Consts.USER_ID,"");
-        Prefs.putString(Consts.USER_NAME,"");
+    protected void clearData() {
+        Prefs.putString(Consts.USER_INFO, "");
     }
 
 }

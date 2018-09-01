@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userInfo_layout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@color/unify_bg_color"
@@ -39,7 +40,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="3dp"
-        android:text="冀AF***8"
+        tools:text="冀AF***8"
         android:textColor="#bfc0c1" />
 </RelativeLayout>
 
