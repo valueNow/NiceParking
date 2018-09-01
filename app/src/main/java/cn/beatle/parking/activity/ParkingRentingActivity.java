@@ -14,7 +14,7 @@ public class ParkingRentingActivity extends BaseFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_renting);
-      //  initView(savedInstanceState);
+        //  initView(savedInstanceState);
 
     }
 
