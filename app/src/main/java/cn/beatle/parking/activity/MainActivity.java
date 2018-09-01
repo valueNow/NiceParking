@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -43,7 +44,6 @@ import cn.beatle.parking.R;
 import cn.beatle.parking.http.JSAction;
 import cn.beatle.parking.http.Urls;
 import cn.beatle.parking.http.UserInfo;
-import cn.beatle.parking.utils.Prefs;
 
 
 public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -236,8 +236,12 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 startActivity(orderList);
                 break;
             case R.id.version_info:
+                Toast ts = Toast.makeText(this.getBaseContext(),"已经是最新版本！", Toast.LENGTH_LONG);
+                ts.show() ;//这个是打开的意思,就是调用的意思。
                 break;
             case R.id.service_center:
+                Intent service_center_intent = new Intent(this,ServiceCenter.class);
+                startActivity(service_center_intent);
                 break;
            /* case R.id.item_location:
                 Intent intent = new Intent(MainActivity.this, Location_Activity.class);

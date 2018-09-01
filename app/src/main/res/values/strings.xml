@@ -76,9 +76,10 @@
     <string name="login">登录</string>
     <string name="my_orders">我的订单</string>
     <string name="parking_rent">车位租赁</string>
-    <string name="version_info">版本信息</string>
+    <string name="version_info">版本更新 : V1.0.1</string>
     <string name="service_center">客服中心</string>
     <string name="parking_info"><Data><![CDATA[共&#160;%1$d&#160;个车位,剩余&#160;<font color="#196fd4">%2$d</font>&#160;个]]></Data></string>
     <string name="title_activity_parking_details">ParkingDetails</string>
     <string name="logout">退出登录</string>
+    <string name="title_activity_appversion">APPVersion</string>
 </resources>

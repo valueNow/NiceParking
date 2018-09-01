@@ -13,46 +13,9 @@
         android:minHeight="@dimen/all_topbar"
         app:background_color="@color/white"
         app:leftDrawable="@mipmap/back_icon_black"
-<<<<<<< HEAD
-        app:statusbar_light="true"
-        app:title_text="暂未开启、敬请期待" />
-
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true">
-        <!--android:layout_alignParentStart="true"-->
-
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/order_result_textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="100dp"
-                android:drawablePadding="18dp"
-                android:drawableTop="@mipmap/order_succ"
-                android:gravity="center"
-                android:textColor="#196fd4"
-                android:textSize="18sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <!--android:layout_alignParentStart="true"-->
-
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v4.widget.NestedScrollView>
-=======
         app:statusbar_light="true" />
->>>>>>> 75825a3f0142dc946ed3e0b1e653722fa5b848dd
 
-    <TextView
+   <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,5 +29,6 @@
         android:textColor="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold" />
+
 
 </RelativeLayout>

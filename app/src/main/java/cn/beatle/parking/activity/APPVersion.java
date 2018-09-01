@@ -6,7 +6,7 @@ import android.view.View;
 import cn.beatle.parking.R;
 import cn.beatle.parking.view.TitleBar;
 
-public class ParkingRentingActivity extends BaseFragmentActivity {
+public class APPVersion extends BaseFragmentActivity {
 
     private TitleBar titleBar;
 
@@ -17,7 +17,6 @@ public class ParkingRentingActivity extends BaseFragmentActivity {
         initView(savedInstanceState);
 
     }
-
     private void initView(Bundle savedInstanceState) {
         titleBar = findViewById(R.id.title_bar_rent);
         titleBar.setLeftBtnClickListener(new View.OnClickListener() {
