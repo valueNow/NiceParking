@@ -1,6 +1,5 @@
 package cn.beatle.parking.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,10 +10,10 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-import cn.beatle.parking.utils.OSUtils;
 import cn.beatle.parking.R;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.Urls;
+import cn.beatle.parking.utils.OSUtils;
 import cn.beatle.parking.view.TitleBar;
 
 public class RegisterActivity extends BaseFragmentActivity implements View.OnClickListener {
@@ -43,7 +42,6 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         carNoEt = findViewById(R.id.carNo_editText);
         registerBtn = findViewById(R.id.register_button);
         registerBtn.setOnClickListener(this);
-        findViewById(R.id.register_tips).setOnClickListener(this);
     }
 
     @Override
@@ -51,9 +49,6 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         switch (view.getId()) {
             case R.id.register_button:
                 register();
-                break;
-            case R.id.register_tips:
-                jumpToLogin();
                 break;
         }
     }
@@ -125,9 +120,4 @@ public class RegisterActivity extends BaseFragmentActivity implements View.OnCli
         });
     }
 
-    private void jumpToLogin() {
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

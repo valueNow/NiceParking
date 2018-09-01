@@ -13,6 +13,7 @@
         android:minHeight="@dimen/all_topbar"
         app:background_color="@color/white"
         app:leftDrawable="@mipmap/back_icon_black"
+<<<<<<< HEAD
         app:statusbar_light="true"
         app:title_text="暂未开启、敬请期待" />
 
@@ -47,12 +48,20 @@
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
+=======
+        app:statusbar_light="true" />
+>>>>>>> 75825a3f0142dc946ed3e0b1e653722fa5b848dd
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar_rent"
         android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:drawablePadding="18dp"
+        android:drawableTop="@mipmap/order_succ"
+        android:gravity="center"
         android:text="暂未开启、敬请期待"
         android:textColor="@color/blue"
         android:textSize="30sp"

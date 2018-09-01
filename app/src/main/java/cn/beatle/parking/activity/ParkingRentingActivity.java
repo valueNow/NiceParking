@@ -15,7 +15,15 @@ public class ParkingRentingActivity extends BaseFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_renting);
+<<<<<<< HEAD
 
+=======
+        initView(savedInstanceState);
+
+    }
+
+    private void initView(Bundle savedInstanceState) {
+>>>>>>> 75825a3f0142dc946ed3e0b1e653722fa5b848dd
         titleBar = findViewById(R.id.title_bar_rent);
         titleBar.setLeftBtnClickListener(new View.OnClickListener() {
             @Override
