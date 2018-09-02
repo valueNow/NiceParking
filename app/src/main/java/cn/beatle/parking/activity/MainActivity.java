@@ -46,7 +46,7 @@ import cn.beatle.parking.http.Urls;
 import cn.beatle.parking.http.UserInfo;
 
 
-public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class MainActivity extends CheckPermissionsActivity implements NavigationView.OnNavigationItemSelectedListener,
         AMapLocationListener {
 
 

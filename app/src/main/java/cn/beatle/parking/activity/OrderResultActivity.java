@@ -34,7 +34,7 @@ import cn.beatle.parking.http.ParkingBean;
 import cn.beatle.parking.utils.OSUtils;
 import cn.beatle.parking.view.TitleBar;
 
-public class OrderResultActivity extends BaseFragmentActivity implements AMapLocationListener{
+public class OrderResultActivity extends CheckPermissionsActivity implements AMapLocationListener{
     private ParkingBean parkingBean;
     private TitleBar titleBar;
     private TextView orderResTv, parkingName, parkingLoc, orderTime;
@@ -201,6 +201,11 @@ public class OrderResultActivity extends BaseFragmentActivity implements AMapLoc
             Log.d(OrderResultActivity.class.getSimpleName(),"onLocationChanged mLocationAddr : " + mLocationAddr);
             Log.d(OrderResultActivity.class.getSimpleName(),"onLocationChanged mLocationLon : " + mLocationLon);
             Log.d(OrderResultActivity.class.getSimpleName(),"onLocationChanged mLocationLat : " + mLocationLat);
+            if(aMapLocationClient!=null){
+                aMapLocationClient.stopLocation();
+                aMapLocationClient.onDestroy();
+                aMapLocationClient = null;
+            }
         } else {
             Log.d(OrderResultActivity.class.getSimpleName(),"location Error, ErrCode:"
                     + aMapLocation.getErrorCode() + ", errInfo:"

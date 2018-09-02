@@ -95,6 +95,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="23dp"
                     android:layout_marginStart="15dp"
+                    android:gravity="right|center_vertical"
                     android:ellipsize="end"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="@id/loc_key"
