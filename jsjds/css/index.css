@@ -1,0 +1,195 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+	font-size: 0.15rem;
+}
+.contentBox{
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.mapBox{
+	width: 100%;
+	height: 100%;
+	background: #ccc;
+}
+.bottomBox{
+	width: 100%;
+	height: 1.235rem;
+	position: absolute;
+	bottom: 0;
+	overflow-y: auto!important;
+}
+.bottomInner{
+	width: 100%;
+	padding: 0 0.1rem;
+}
+.bottomDiv{
+	width: 100%;
+	height: 0.4rem;
+	background: #fff;
+	border-radius: 3px;
+	margin-bottom: 0.2rem;
+}
+.bottomDiv>span{
+	display: inline-block;
+	width: 0.55rem;
+	position: relative;
+	
+}
+/* .bottomDiv>span:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0.15rem;
+	width: 0;
+	transform: translateY(-50%);
+	border-bottom: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 10px solid #1C1C1C;
+} */
+.bottomDiv>span,.bottomDiv>p,.bottomDiv>.bottom_search{
+	float: left;
+	line-height: 0.4rem;
+	padding-left: 0.1rem;
+}
+.bottomDiv>p{
+	display: block;
+	width:2.4rem;
+	overflow:hidden;
+	word-break:keep-all;/* 不换行 */
+	white-space:nowrap;/* 不换行 */
+	overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.bottomDiv>.bottom_search{
+	padding-right: 0.1rem;
+	float: right;
+	font-size: 0.18rem;
+    background: azure;
+}
+.bottomDiv2{
+	height: 0.435rem;
+	overflow: hidden;
+}
+.bottom_line{
+	display: none;
+	width: 0.9rem;
+	height: 0.025rem;
+	background: orange;
+	margin: 0.15rem 0 0.15rem 0.425rem;
+}
+.bottomDiv2>ul{
+	width: 100%;
+	overflow: hidden;
+}
+.bottomDiv2>ul li{
+	float: left;
+	width: 20%;
+	text-align: center;
+	line-height: 0.4rem;
+}
+.bottomDiv2_li{
+	color: orange;
+}
+
+
+
+.bottomInner2{
+	width: 100%;
+	background: #fff;
+	overflow: hidden;
+	display: none;
+}
+.bottomInner2>.title{
+	width: 100%;
+	overflow: hidden;
+	padding: 0.15rem 0 0rem 0.25rem;
+}
+.bottomInner2>.title h3{
+	float: left;
+	font-size: 0.2rem;
+}
+.bottomInner2>.title p{
+	color: #737171;
+	float: left;
+	margin: 0.065rem 0 0 0.1rem;
+}
+.bottomInner2>ul{
+	width: 100%;
+	padding: 0.1rem 0.25rem;
+}
+.bottomInner2>ul>li{
+	width: 100%;
+	height: 1.15rem;
+	overflow: hidden;
+	margin: 0.15rem 0;
+}
+.bottom_imgBox{
+	float: left;
+	width: 35%;
+	height: 100%;
+	border-radius: 0.05rem;
+	overflow: hidden;
+}
+.bottom_imgBox>img{
+	width: 100%;
+	height: 100%;
+}
+.bottom_pBox{
+	width: 63%;
+	height: 100%;
+	float: right;
+}
+.bottom_pBox>.ptitle{
+	width: 100%;
+	font-size: 0.15rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 0.075rem;
+}
+.bottom_pBox>p{
+	color: #737171;
+	margin-bottom: 0.035rem;
+}
+.bottom_pBox>p>span{
+	color: orange;
+	font-size: 0.1rem;
+	margin-top: -0.05rem;
+	float: right;
+}
+.bottom_pBox>.weizhiP img{
+	width: 0.2rem;
+	height: 0.2rem;
+	margin-right: 0.075rem;
+	float: left;
+}
+.bottom_pBox>.weizhiP span{
+	color:#737171;
+	font-size: 0.15rem;
+	margin-top: 0;
+	float: left;
+}
+.bottom_pBox>ul{
+	width: 100%;
+	overflow: hidden;
+	padding-top: 0.035rem;
+}
+.bottom_pBox>ul>li{
+	padding: 0.025rem 0.1rem;
+	float: left;
+	margin-right: 0.1rem;
+	border: 1px solid #737171;
+	color: #737171;
+}
+.amap-logo{
+	display: none !important;
+}
+.amap-copyright{
+	display: none !important;
+}

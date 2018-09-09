@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"> -->
+	<meta name="viewport" content="width=device-width">
+	<title></title>
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css" />
+	<script src="https://webapi.amap.com/maps?v=1.4.8&key=380c2f90caf189326a7f59c67af2c840&plugin=AMap.PlaceSearch,AMap.AdvancedInfoWindow,AMap.ToolBar,AMap.Geocoder"></script>
+	<!-- <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+	<script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/Turf.js/5.1.6/turf.min.js"></script>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/rem.js"></script>
+	<script src="js/index.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap-slider.js"></script> -->
+</head>
+
+<body>
+	<div class="contentBox">
+		<div id="container" class="mapBox"></div>
+		<div class="bottomBox">
+			<div class="bottomInner">
+				<div class="bottomDiv">
+					<span>地点：</span>
+					<p id="positionAddress"></p>
+					<div onclick="funSerchCarStation()" class="bottom_search">查询</div>
+				</div>
+				<div class="bottomDiv bottomDiv2">
+					<div class="bottom_line"></div>
+					<ul>
+						<li data="1000" class="bottomDiv2_li">1km</li>
+						<li data="2000">2km</li>
+						<li data="3000">3km</li>
+						<li data="4000">4km</li>
+						<li data="5000">5km</li>
+					</ul>
+				</div>
+			</div>
+			<div class="bottomInner2">
+				<div class="title">
+					<h3 id="serchCount" ></h3>
+					<p>停车场详情&gt</p>
+				</div>
+				<ul>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="bottom_imgBox">
+							<img src="img/ban.png" alt="" />
+						</div>
+						<div class="bottom_pBox">
+							<h3 class="ptitle">诶of何润锋瑞瑞规划那如果吧入诶of何润锋瑞瑞规划那如果吧入</h3>
+							<p>14.45m|8/24层
+								<span>￥3360/月</span>
+							</p>
+							<p class="weizhiP">
+								<img src="img/位置.png" alt="" /> 距离10号线尺度和100m
+							</p>
+							<ul>
+								<li>自如转会</li>
+								<li>湖北高</li>
+
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<script>
+	var circle = null;
+	var serch = false;
+	//var slid = $("#ex5").slider().on('slide', sliderChange).data('slider');
+	// $("#destroyEx5Slider").click(function() {
+	// 	$("#ex5").slider('destroy');
+	// });
+	var nowPosition = [116.397428, 39.90923];//当前位置
+	$("#container").on("touchstart", function () {
+		$(".bottomBox").animate({ "height": "1.235rem" }, function () {
+			$(".bottomInner2").hide();
+			$(".bottomInner").show();
+		});
+	});
+	var positionPicker;
+	var map;
+	var marker;
+	var positionNow;
+	var geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: "all"
+        });     
+	AMapUI.loadUI(['misc/PositionPicker'], function (PositionPicker) {
+		map = new AMap.Map('container', {
+			resizeEnable: true,
+			center: nowPosition,
+			zoom: 13,
+			//isHotspot: true
+		});
+		   
+          
+		// map.on('click', function(e) {
+		// 	$(".bottomBox").animate({"height":"1.535rem"},function(){
+		// 		$(".bottomInner2").hide();
+		// 		$(".bottomInner").show();
+		// 	});
+		// });
+		// map.on('touch', function(e) {
+		// 	$(".bottomBox").animate({"height":"1.535rem"},function(){
+		// 		$(".bottomInner2").hide();
+		// 		$(".bottomInner").show();
+		// 	});
+		// });
+		$(".bottomDiv2>ul>li").on("click", function (params) {
+			var data = $(this).attr("data");
+			data = parseInt(data);
+			if (circle) {
+				circle.setRadius(data);
+			}
+		})
+		marker = new AMap.Marker({
+			position: map.getCenter(),
+			icon: 'img/mark.png', // 添加 Icon 图标 URL
+		});
+		map.add(marker);
+		positionPicker = new PositionPicker({
+			mode: 'dragMap',
+			map: map
+		});
+
+		positionPicker.on('success', function (positionResult) {
+			for (var index = 0; index < lstPoint.length; index++) {
+				var element = lstPoint[index];
+				if (element) {
+					element.setMap(null);
+					element = null;
+				}
+			}
+			lstPoint = [];
+			$("#positionAddress").html(positionResult.address);
+			positionNow = positionResult.position;
+			if (circle) {
+				circle.setCenter([positionResult.position.lng, positionResult.position.lat]);
+				marker && marker.setPosition([positionResult.position.lng, positionResult.position.lat]);
+				marker.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+					offset: new AMap.Pixel(-30, -20),//修改label相对于maker的位置
+					content: "在這裡找車位"
+				});
+				//map.setFitView();
+
+				// setTimeout(function (params) {
+				//     funSerchCarStation(positionResult.position);
+				// }, 1000);
+				//
+			}
+		});
+		positionPicker.on('fail', function (positionResult) {
+			// document.getElementById('lnglat').innerHTML = ' ';
+			// document.getElementById('address').innerHTML = ' ';
+			// document.getElementById('nearestJunction').innerHTML = ' ';
+			// document.getElementById('nearestRoad').innerHTML = ' ';
+			// document.getElementById('nearestPOI').innerHTML = ' ';
+		});
+		var onModeChange = function (e) {
+			positionPicker.setMode(e.target.value)
+		}
+		positionPicker.start();
+		//positionPicker.marker.setAnimation('AMAP_ANIMATION_BOUNCE');
+		positionPicker.marker.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+			offset: new AMap.Pixel(-80, 10),//修改label相对于maker的位置
+			content: "在這裡找車位"
+		});
+	});
+
+	//var marker = createMark([116.405467, 39.907761], "img/dingwei.png");
+	setTimeout(function (params) {
+		circle = new AMap.Circle({
+			center: positionPicker.marker.getPosition(), // 圆心位置
+			radius: 1000,  //半径
+			strokeColor: "#FF33FF", //线颜色
+			strokeOpacity: 0.2, //线透明度
+			strokeWeight: 3,    //线宽
+			fillColor: "#1791fc", //填充色
+			fillOpacity: 0.05//填充透明度
+		});
+		map.add(circle);
+	}, 500);
+
+
+
+	//实例化信息窗体
+	var title = '方恒假日酒店<span style="font-size:11px;color:#F00;">价格:318</span>',
+		content = [];
+	content.push("<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134'>地址：北京市朝阳区阜通东大街6号院3号楼东北8.3公里");
+	content.push("电话：010-64733333");
+	content.push("<a href='https://ditu.amap.com/detail/B000A8URXB?citycode=110105'>详细信息</a>");
+	var infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
+
+	/*创建infowindow*/
+	function createInfowindow(content) {
+		// var content='<div class="info-title">当前位置</div><div class="info-content">' +
+		// '<img src="https://webapi.amap.com/images/amap.jpg">' +
+		// '您的当前位置。<br/></div>';
+		return new AMap.AdvancedInfoWindow({
+			content: content,
+			offset: new AMap.Pixel(0, -30)
+		});
+	}
+	function sliderChange(params) {
+		var value = slid.getValue() * 1000;
+		if (circle) {
+			circle.setRadius(value);
+			//map.setFitView();
+		}
+	}
+	/**/
+	function createMarkByPosition(position) {
+		AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
+			var iconTheme = 'numv2';
+			var iconStyles = SimpleMarker.getBuiltInIconStyles(iconTheme);
+			new SimpleMarker({
+				iconTheme: iconTheme,
+				//iconStyle: iconStyles[0],
+				iconLabel: {
+					innerHTML: String.fromCharCode('A'),
+					style: {
+						color: "red"
+					}
+				},
+				map: map,
+				position: position
+			});
+		})
+	}
+
+	function createMark(position, imgurl) {
+		var marker = new AMap.Marker({
+			map: map,
+			icon: imgurl,
+			position: position
+		});
+		//map.add(marker);
+		return marker;
+	}
+	/*搜索附近车位*/
+	var lstPoint = [];
+	var stationData={};
+	function funSerchCarStation(position) {
+		position = positionNow;
+		for (var index = 0; index < lstPoint.length; index++) {
+			var element = lstPoint[index];
+			if (element) {
+				element.setMap(null);
+				element = null;
+			}
+		}
+		lstPoint = [];
+		serch = true;
+		/*画出附近1000米半径圈*/
+		var boolExit = false;
+		if (circle) {
+			boolExit = true;
+		}
+
+		if (!boolExit) {
+			circle = new AMap.Circle({
+				center: position, // 圆心位置
+				radius: circle.getRadius(),  //半径
+				strokeColor: "#F33",  //线颜色
+				strokeOpacity: 1,  //线透明度
+				strokeWeight: 3,  //线粗细度
+				fillColor: "#ee2200",  //填充颜色
+				fillOpacity: 0.35 //填充透明度
+			});
+			map.add(circle);
+		}
+		var center = [position.lng, position.lat];
+		var radius = circle.getRadius() / 2000;
+		var options = { steps: 10, units: 'miles', properties: { foo: 'bar' } };
+		var circles = turf.circle(center, radius, options);
+		var bbox = turf.bbox(circles);
+
+		var points = turf.randomPoint(20, { bbox: bbox });
+		var resultPoints = [];
+		var lnglatCenter=new AMap.LngLat(position.lng, position.lat);
+		var lstGeocodePoint=[];
+		$(".bottomInner2>ul").empty();
+		for (var index = 0; index < points.features.length; index++) {
+			var element = points.features[index];
+			if (turf.booleanContains(circles, element)) {
+				var position = element.geometry.coordinates;
+				var myLngLat = new AMap.LngLat(position[0], position[1]);
+				if (circle.contains(myLngLat)) {//如果点在圆内则输出
+					lstGeocodePoint.push(myLngLat);
+					resultPoints.push(position);
+					var carstation = createMark(position, "img/carposition.png");
+					/*定义弹出窗口*/
+					var contentNowPosition = '<div class="info-title">当前位置</div><div class="info-content">' +
+						'<img src="https://webapi.amap.com/images/amap.jpg">' +
+						'<input type="button" value="搜索附近车位"  onclick="funSerchCarStation();"/><br/></div>';
+					//var infoWindow = createInfowindow(contentNowPosition);
+					/*给当前位置点添加点击事件*/
+					//鼠标点击marker弹出自定义的信息窗体
+					//carstation.on('click', markerClick);
+					//carstation.emit('click', { target: carstation });
+					//carstation.content = '<div class="info-middle" style="background-color: white;"><img src="http://tpc.googlesyndication.com/simgad/5843493769827749134">地址：北京市朝阳区阜通东大街6号<br>电话：010-64733333<br><button id="destroyEx5Slider"  style="class="btn btn-danger">详细信息</button></div>';
+					carstation._distance=lnglatCenter.distance(myLngLat);
+					carstation._names=index;
+					carstation._position=position;
+					carstation._index=lstPoint.length;
+					
+					//$(".bottomInner2>ul").append(htmlShow);
+					lstPoint.push(carstation);
+					// AMap.event.addListener(carstation, 'click', function () {
+					//     infoWindow.open(map, carstation.getPosition());
+					// });
+				}
+
+			}
+		}
+		lstPoint.sort(compare("_distance"));
+		for (var index = 0; index < lstPoint.length; index++) {
+			var element = lstPoint[index];
+			var position=element._position;
+			var imgindex=Math.ceil( Math.random()*100);
+			var count=Math.ceil( Math.random()*1000);
+			var lostCount=Math.ceil( Math.random()*Math.random()*1000);
+			var number="010-"+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9)+Math.ceil( Math.random()*9);
+			var imgurls="http://114.215.45.240:90/img/station/"+imgindex+".jpg";
+			var miaoshu1=stationStatue[imgindex][0];
+			var miaoshu2=stationStatue[imgindex][1];
+			stationData[index]={
+				img:imgurls,
+				count:count,
+				lostCount:lostCount,
+				yysj:"9:00-24:00",
+				position:"["+position.join(",")+"]",
+				distance:Math.ceil(element._distance),
+				name:"",
+				address:"",
+				number:number
+			};
+			var htmlShow='<li ids="'+index+'" count="'+count+'" number="'+number+'" lostCount="'+lostCount+'" yysj="9:00-24:00"  onclick="sendInfoToJava(this)" >\
+						<input type="hidden" index="'+index+'" data="['+position.join(",")+']" id="hid'+index+'">\
+						<div class="bottom_imgBox" data="['+position.join(",")+']">\
+							<img src="'+imgurls+'" alt="">\
+						</div>\
+						<div class="bottom_pBox">\
+							<h3 types="name" class="ptitle">车位</h3>\
+							<p  types="distance" >距搜索位置：'+Math.ceil(element._distance)+'米\
+								<!--<span>￥3360/月</span>-->\
+							</p>\
+							<p class="weizhiP">\
+								<img src="img/位置.png" alt=""> <span types="rout" >/span>\
+							</p>\
+							<ul>\
+								<li >'+miaoshu1+'</li>\
+								<li>'+miaoshu2+'</li>\
+							</ul>\
+						</div>\
+					</li>';
+					$(htmlShow).appendTo($(".bottomInner2>ul"));
+					$("#hid"+index).on("click",geocoderone);
+					$("#hid"+index).click();
+		}
+		$("#serchCount").html("查询结果("+lstPoint.length+")");
+		//var sample = turf.sample(points, 5);
+
+		/*通过传入值画搜索出来的停车场*/
+	}
+	function geocoderone(e) {
+		e.stopPropagation(); 
+		var obj=$(e.target);
+		var Point=obj.attr('data');
+		var li=obj.parent();
+		var ids= parseInt( $(li).attr("ids"));
+		var dataone=stationData[ids];
+		var h3= $(li).find("[types='name']");
+		var rout= $(li).find("[types='rout']");
+		geocoder.getAddress(JSON.parse(Point), function(status, result) {
+			if (status === 'complete' && result.info === 'OK') {
+				console.log(result);
+				obj.val(result.regeocode.formattedAddress);
+				dataone.name=result.regeocode.pois[0].name+"停车场";
+				dataone.address=result.regeocode.formattedAddress;
+				h3.html(result.regeocode.pois[0].name+"停车场");
+				var routValue="";
+				if(result.regeocode.roads && result.regeocode.roads.length>0){
+					routValue="距离"+result.regeocode.roads[0].name+result.regeocode.roads[0].distance+"米";
+				}
+				rout.html(routValue);
+
+			}
+		});
+		return false;
+	}
+	//关闭信息窗体
+	function markerClick(e) {
+		infoWindow.setContent(e.target.content);
+		infoWindow.open(map, e.target.getPosition());
+	}
+	function closeInfoWindow() {
+		map.clearInfoWindow();
+	}
+
+	// 发送消息到Android客户端
+	function sendInfoToJava(obj) {
+		var ids= parseInt( $(obj).attr("ids"));
+		var dataone=stationData[ids];
+		//console.log(dataone);
+		
+		$.ajax({
+				url:'http://114.215.45.240:82/index.php/admin/spot_interest/ajax_station_add',
+				type: "POST",
+				data: {data:dataone},
+				dataType:'json',
+				headers: {
+				"Content-type": "application/x-www-form-urlencoded"
+				},
+				success:function(ob){
+					console.log('suc');
+					if(ob!=""){
+						dataone.id=ob;
+						window.NiceParkingJS.order(JSON.stringify(dataone));
+					}else{
+					}
+				}
+				,error:function(e){
+					if(e.readyState==4 && e.status==200){
+						dataone.id=e.responseText;
+						window.NiceParkingJS.order(JSON.stringify(dataone));
+					}else{
+					}
+				}
+			});
+	}
+	// android 調用頁面定位
+	function showInfoFromApp(params) {
+		params=JSON.parse(params);
+		var lng = params[0];
+		var lat = params[1];
+		var positiondingwei=new AMap.LngLat(lng, lat);
+		map.setCenter(positiondingwei);
+		//funSerchCarStation(positiondingwei);
+		setTimeout(function(){$(".bottom_search").click()},500);
+	}
+	//定义一个比较器
+	function compare(propertyName) {
+    return function(object1, object2) {
+      var value1 = object1[propertyName];
+      var value2 = object2[propertyName];
+      if (value2 < value1) {
+        return 1;
+      } else if (value2 > value1) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  }
+  //使用方法
+  //data.sort(compare("age"));
+</script>
