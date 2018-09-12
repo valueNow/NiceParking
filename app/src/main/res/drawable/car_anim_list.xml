@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@mipmap/car1" android:duration="100" />
+    <item android:drawable="@mipmap/car3" android:duration="100" />
+    <item android:drawable="@mipmap/car5" android:duration="100" />
+    <item android:drawable="@mipmap/car7" android:duration="100" />
+    <item android:drawable="@mipmap/car9" android:duration="100" />
+    <item android:drawable="@mipmap/car11" android:duration="100" />
+    <item android:drawable="@mipmap/car13" android:duration="100" />
+    <item android:drawable="@mipmap/car15" android:duration="100" />
+    <item android:drawable="@mipmap/car17" android:duration="100" />
+    <item android:drawable="@mipmap/car19" android:duration="100" />
+    <item android:drawable="@mipmap/car21" android:duration="100" />
+    <item android:drawable="@mipmap/car23" android:duration="100" />
+    <item android:drawable="@mipmap/car25" android:duration="100" />
+    <item android:drawable="@mipmap/car27" android:duration="100" />
+    <item android:drawable="@mipmap/car29" android:duration="100" />
+</animation-list>

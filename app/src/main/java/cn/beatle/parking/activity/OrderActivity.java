@@ -17,6 +17,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import cn.beatle.parking.Consts;
 import cn.beatle.parking.R;
+import cn.beatle.parking.utils.OSUtils;
 import cn.beatle.parking.utils.VolleyUtils;
 import cn.beatle.parking.http.HttpUtil;
 import cn.beatle.parking.http.ParkingBean;
@@ -64,6 +65,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
         parkingInfo = findViewById(R.id.parking_num);
         openTime = findViewById(R.id.open_time);
         tel = findViewById(R.id.tel_textView);
+        tel.setOnClickListener(this);
         order = findViewById(R.id.order_button);
         order.setOnClickListener(this);
 
@@ -85,6 +87,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
                 order();
                 break;
             case R.id.tel_textView:
+                OSUtils.callPhone(parkingBean.getNumber(),this);
                 break;
         }
     }

@@ -1,8 +1,10 @@
 package cn.beatle.parking.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
@@ -172,5 +174,11 @@ public class OSUtils {
 
     }
 
+    public static void callPhone(String phoneNum, Context context) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNum);
+        intent.setData(data);
+        context.startActivity(intent);
+    }
 
 }

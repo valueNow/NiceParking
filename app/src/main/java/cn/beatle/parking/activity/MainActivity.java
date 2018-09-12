@@ -23,6 +23,7 @@ import android.view.ViewTreeObserver;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -118,7 +119,7 @@ public class MainActivity extends CheckPermissionsActivity implements Navigation
         init();
 
         mapWebView = findViewById(R.id.map_webView);
-
+        mapWebView.setWebViewClient(mWebViewClient);
         WebSettings settings = mapWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -416,5 +417,27 @@ public class MainActivity extends CheckPermissionsActivity implements Navigation
         intent.putExtra(Consts.ORDER_INFO, orderInfo);
         startActivity(intent);
     }
+
+    private WebViewClient mWebViewClient = new WebViewClient() {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url.startsWith("http:") || url.startsWith("https:")) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
+        }
+
+        public void onPageFinished(WebView view, String url) {
+
+        }
+
+        @Override
+        public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
+            super.doUpdateVisitedHistory(view, url, isReload);
+        }
+    };
 
 }
