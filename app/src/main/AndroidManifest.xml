@@ -39,7 +39,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <!-- 3.2.0版本增加 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".ParkingApplication"
         android:allowBackup="true"
@@ -91,10 +92,9 @@
         <activity android:name=".activity.OrderListActivity" />
         <activity android:name=".activity.ParkingRentingActivity" />
         <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.ServiceCenter"></activity>
-
-        <activity android:name=".activity.UpdatePwdActivity"/>
-
+        <activity android:name=".activity.ServiceCenter" />
+        <activity android:name=".activity.UpdatePwdActivity" />
+        <activity android:name=".activity.ParkMapActivity"></activity>
     </application>
 
 </manifest>

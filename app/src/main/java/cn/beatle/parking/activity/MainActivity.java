@@ -428,10 +428,11 @@ public class MainActivity extends CheckPermissionsActivity implements Navigation
         }
 
         public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
+            openLoadingDialog("");
         }
 
         public void onPageFinished(WebView view, String url) {
-
+            closeLoadingDialog();
         }
 
         @Override

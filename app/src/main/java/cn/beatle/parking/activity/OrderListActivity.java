@@ -59,6 +59,7 @@ public class OrderListActivity extends BaseFragmentActivity {
     }
 
     private void getOrders() {
+        openLoadingDialog("");
         StringBuilder orders = new StringBuilder(Urls.GET_ORDERS_URL);
         orders.append("account_id=").append(getAccount());
         HttpUtil.get(orders.toString(), new AsyncHttpResponseHandler() {
@@ -99,6 +100,7 @@ public class OrderListActivity extends BaseFragmentActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
+                closeLoadingDialog();
             }
         });
     }

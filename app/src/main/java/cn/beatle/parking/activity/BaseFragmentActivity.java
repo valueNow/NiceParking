@@ -15,6 +15,7 @@ import cn.beatle.parking.R;
 import cn.beatle.parking.StatusBarLight;
 import cn.beatle.parking.utils.OSUtils;
 import cn.beatle.parking.utils.Prefs;
+import cn.beatle.parking.view.LoadingDialog;
 
 /**
  * @author coolyou|M
@@ -31,7 +32,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 
 
     private boolean mSlideToFinishEnable = true;
-
+    private LoadingDialog mLoadingDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,6 +148,26 @@ public class BaseFragmentActivity extends FragmentActivity {
     protected void clearData() {
         Prefs.putString(Consts.USER_INFO, "");
         ParkingApplication.getInstance().setUserInfo(null);
+    }
+
+    public void openLoadingDialog(String content) {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = (LoadingDialog) new LoadingDialog.LoadingBuilder(this)
+                    .setContent(content)
+                    .setDialogBackgroud(getResources().getDrawable(R.drawable.l_loading_bg))
+                    .create();
+        } else {
+            mLoadingDialog.setContent(content);
+        }
+        if (this!= null && !this.isFinishing()) {
+            mLoadingDialog.show();
+        }
+    }
+
+    public void closeLoadingDialog() {
+        if (this != null && !isFinishing() && mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            mLoadingDialog.dismiss();
+        }
     }
 
 }

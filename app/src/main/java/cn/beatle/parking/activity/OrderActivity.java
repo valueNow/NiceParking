@@ -62,6 +62,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
         cover.getLayoutParams().height = height;
         name = findViewById(R.id.name_textView);
         address = findViewById(R.id.address_textView);
+        address.setOnClickListener(this);
         parkingInfo = findViewById(R.id.parking_num);
         openTime = findViewById(R.id.open_time);
         tel = findViewById(R.id.tel_textView);
@@ -87,7 +88,12 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
                 order();
                 break;
             case R.id.tel_textView:
-                OSUtils.callPhone(parkingBean.getNumber(),this);
+                OSUtils.callPhone(parkingBean.getNumber(), this);
+                break;
+            case R.id.address_textView:
+                Intent intent = new Intent(this, ParkMapActivity.class);
+                intent.putExtra(Consts.LOCATION, parkingBean.getPosition());
+                startActivity(intent);
                 break;
         }
     }
@@ -96,6 +102,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
         if (!isLogin(true)) {
             return;
         }
+        openLoadingDialog("");
         StringBuilder order = new StringBuilder(Urls.ORDER_URL);
         order.append("park_id=").append(parkingBean.getId()).append("&park_name=").append(parkingBean.getName())
                 .append("&book_st=").append("201808280900").append("&book_ed=").append("201808282000").append("&book_account=")
@@ -116,8 +123,8 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
                     }.getType()));
                     startActivity(orderResult);
                     finish();
-                }else{
-                    Toast.makeText(OrderActivity.this,"预约失败",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(OrderActivity.this, "预约失败", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -129,6 +136,7 @@ public class OrderActivity extends BaseFragmentActivity implements View.OnClickL
             @Override
             public void onFinish() {
                 super.onFinish();
+                closeLoadingDialog();
             }
         });
 
