@@ -51,4 +51,11 @@ public class LoadingDialog extends LPBaseDialog {
         }
     }
 
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        if(mAnim!=null && mAnim.isRunning()){
+            mAnim.stop();
+        }
+    }
 }
